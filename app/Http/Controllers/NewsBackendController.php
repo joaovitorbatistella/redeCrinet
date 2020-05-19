@@ -102,4 +102,19 @@ class NewsBackendController extends Controller
         }
         return redirect('/backend')->with('success', 'Notícia adicionada com sucesso!!');
     }
+
+    public function delete($uuid)
+    {
+
+        $obj_News = News::find($uuid);
+        return view('backend.delete', ['news' => $obj_News]);
+    }
+
+    public function destroy($uuid)
+    {
+        $obj_News = News::findOrFail($uuid);
+
+        $obj_News->delete($uuid);
+        return Redirect('/backend')->with('sucess', 'Notícia excluída com Sucesso!');
+    }
 }

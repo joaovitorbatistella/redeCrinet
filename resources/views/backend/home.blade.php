@@ -18,21 +18,27 @@
       <th>Autor</th>
       <th>Fonte</th>
       <th>Imagem</th>
+      <th>Categoria</th>
       <th>Atualizada em:</th>
+      <th>Editar</th>
+      <th>Deletar</th>
 
     </tr>
   </thead>
   <tbody>
-  @foreach ($new as $new)
+  @foreach ($result as $res)
 
     <tr>
-      <td><a href="/news/show/{{$new->uuid}}">{{$new->uuid}}</a></td>
-      <td>{{$new->title}}</td>
-      <td>{{$new->body}}</td>
-      <td>{{$new->author}}</td>
-      <td>{{$new->source}}</td>
-      <td><img src="{{ asset($new->image) }}" /></td>
-      <td>{{$new->updated_at}}</td>
+      <td><a href="/news/show/{{$res->uuid}}">{{$res->uuid}}</a></td>
+      <td>{{$res->title}}</td>
+      <td>{{$res->body}}</td>
+      <td>{{$res->author}}</td>
+      <td>{{$res->source}}</td>
+      <td><img src="{{ asset($res->image) }}" /></td>
+      <td>{{$res->nameCategory}}</td>
+      <td>{{$res->updated_at}}</td>
+      <td><a class="btn" href="/news/edit/{{$res->uuid}}">Editar</a></td>
+      <td><a class="btn" href="/news/delete/{{$res->uuid}}">Excluir</a></td>
     </tr>
   @endforeach
 

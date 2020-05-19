@@ -1,6 +1,7 @@
-{{$new->uuid}}
-{{$new->body}}
-{{$new->author}}
-{{$new->source}}
-{{$new->updated_at}}
-<img src="{{ asset($new->image) }}" />
+{{$result->uuid}}
+{{$result->body}}
+{{$result->author}}
+{{$result->source}}
+{{$result->nameCategory}}
+{{$result->updated_at}}
+<img src="{{ asset($result->image) }}" />

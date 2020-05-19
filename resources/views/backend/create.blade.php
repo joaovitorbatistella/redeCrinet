@@ -43,7 +43,7 @@
         </div>
     <label class="col-md-12">Título: <h11>*</h11></label>
         <div class="st-con-input">
-        <input type="text" required="required" maxlength="15" name="title" class="st-input form-control">
+        <input type="text" required="required" name="title" class="st-input form-control">
     </div>
     <label class="col-md-12">Corpo: <h11>*</h11></label>
         <div class="st-con-input">
@@ -51,18 +51,17 @@
     </div>
     <label class="col-md-12">Autor: <h11>*</h11></label>
     <div class="st-con-input">
-        <input type="text" required="required" maxlength="15" name="author" class="st-input form-control">
+        <input type="text" required="required" name="author" class="st-input form-control">
     </div>
     <label class="col-md-12">Fonte: <h11>*</h11></label>
     <div class="st-con-input">
-        <input type="text" required="required" maxlength="15" name="source" class="st-input form-control">
+        <input type="text" required="required" name="source" class="st-input form-control">
     </div>
     <div class="row">
         <div class="col-md-6">
     <label class="col-md-12">Imagem: </label>
         <div class="st-con-input">
         <input type="file" name="image" class="inputfile" />
-        <!--<input type="text" name="image" class="st-input form-control" />-->
         </div>
         </div>
         <div class="col-md-4">

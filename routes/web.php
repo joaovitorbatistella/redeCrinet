@@ -28,3 +28,5 @@ Route::get('/backend/news/create', 'NewsBackendController@create');
 Route::post('/register/news', 'NewsBackendController@store');
 Route::get('/backend/category/create', 'CategoryBackendController@create');
 Route::post('/register/category', 'CategoryBackendController@store');
+Route::get('/news/delete/{uuid}', 'NewsBackendController@delete');
+Route::delete('/delete/{uuid}', 'NewsBackendController@destroy');
