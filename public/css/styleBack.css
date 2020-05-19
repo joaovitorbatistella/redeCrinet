@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: 0;
+    background-color: #393c3c;
+  }
+
+form {
+    max-width: 754px;
+    padding: 10px;
+    margin: auto auto;
+    border: 5px solid teal;
+    border-radius: 20px;
+}
+
+.st-input, .st-select {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    flex: 1;
+    background: transparent;
+    border: 0;
+    color: #232129;
+    overflow:hidden
+}
+
+.st-input:focus {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    flex: 1;
+    background: transparent;
+    border: 0;
+    color: #232129;
+  }
+
+  .st-select select:focus {
+    background: #f4ede8;
+    border-radius: 10px;
+    border: 2px solid #f4ede8;
+    padding: 8px;
+    font-size: 15px;
+  }
+
+.st-con-input {
+    background: #f4ede8;
+    border-radius: 10px;
+    padding: 8px;
+    width: 100%;
+
+    border: 3px solid #337151;
+    color: #666360;
+
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+
+.bottuns {
+    margin-top: 25px;
+}
+
+.addIcon {
+    color: #f4ede8;
+    border: 3px solid #337151;
+    border-radius: 50%;
+}
+
+label {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    font-size: 20px;
+}
+
+h2 {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    text-align: center;
+    padding: 18px;
+}
+
+.st-button{
+    background: transparent;
+    border-radius: 50%;
+    border: transparent;
+}
+
+.st-con-title{
+    background-color: teal;
+}
