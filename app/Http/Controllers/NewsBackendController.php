@@ -10,6 +10,7 @@ use App\Repositories\ImageRepository;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\MessageBag;
 
 
@@ -67,16 +68,22 @@ class NewsBackendController extends Controller
         }
 
         if (!empty($request['nameCategory'])) {
-            if ($request->hasFile('image')) {
+
+            if ($request->hasFile('images')) {
                 $news = News::create($request->except('image', 'category_id'));
 
                 $category = categories::create($request->all());
 
-                $news->path_image = $repo->saveImage($request->image, $news->uuid, 'news', 250);
+                $images = $request->file('images');
+
+                foreach($images as $image) {
+                    $destination = '/images/'.'news/'.$news->uuid;
+                    $path = $image->store($destination, 'public');
+                }
 
                 $obj_News = News::findOrFail($news->uuid);
                 $obj_News->category_id = $category->uuid;
-                $obj_News->image = $news->path_image;
+                $obj_News->image = '/storage/'.$path;
                 $obj_News->save();
 
              } else {
@@ -91,11 +98,17 @@ class NewsBackendController extends Controller
         } else {
             $news = News::create($request->except('image'));
 
-            if ($request->hasFile('image')) {
-                $news->path_image = $repo->saveImage($request->image, $news->uuid, 'news', 250);
+            if ($request->hasFile('images')) {
+
+                $images = $request->file('images');
+
+                foreach($images as $image) {
+                    $destination = '/images/'.'news/'.$news->uuid;
+                    $path = $image->store($destination, 'public');
+                }
 
                 $obj_News = News::findOrFail($news->uuid);
-                $obj_News->image = $news->path_image;
+                $obj_News->image = '/storage/'.$path;
                 $obj_News->save();
              }
 
@@ -115,6 +128,11 @@ class NewsBackendController extends Controller
         $obj_News = News::findOrFail($uuid);
 
         $obj_News->delete($uuid);
+
+        $image_path = public_path("/storage/images/news/{$uuid}");
+
+        File::deleteDirectory($image_path);
+
         return Redirect('/backend')->with('sucess', 'Notícia excluída com Sucesso!');
     }
 }

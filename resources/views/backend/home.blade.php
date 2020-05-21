@@ -34,7 +34,7 @@
       <td>{{$res->body}}</td>
       <td>{{$res->author}}</td>
       <td>{{$res->source}}</td>
-      <td><img src="{{ asset($res->image) }}" /></td>
+      <td><img width="220px" src="{{ asset($res->image) }}" /></td>
       <td>{{$res->nameCategory}}</td>
       <td>{{$res->updated_at}}</td>
       <td><a class="btn" href="/news/edit/{{$res->uuid}}">Editar</a></td>
