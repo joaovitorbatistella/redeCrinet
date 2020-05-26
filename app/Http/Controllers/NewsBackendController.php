@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 use App\News;
 use App\categories;
 use Illuminate\Http\Request;
-use App\Repositories\ImageRepository;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -38,7 +37,7 @@ class NewsBackendController extends Controller
         return view('backend.create', ['categories' => $categoryList]);
     }
 
-    public function store(Request $request, ImageRepository $repo)
+    public function store(Request $request)
     {
         // dados
         $messages = array(

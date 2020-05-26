@@ -18,9 +18,9 @@
         <div class="container-fluid .content-body">
             <div class="row">
                 <div class="col-md-12 content-logo-bar">
-                    <img id="facebook-main" style="width: 50px" src="{{asset('images/facebook.png')}}" />
-                    <img src="{{asset('images/logo.png')}}" />
-                    <img id="youtube-main" style="width: 70px" src="{{asset('images/yt_logo.png')}}" />
+                    <a href="#" ><img id="facebook-main" style="width: 50px" src="{{asset('images/facebook.png')}}" /></a>
+                    <a href="#" ><img src="{{asset('images/logo.png')}}" /></a>
+                    <a href="#" ><img id="youtube-main" style="width: 70px" src="{{asset('images/yt_logo.png')}}" /></a>
                 </div>
             </div>
 
@@ -105,14 +105,38 @@
                 </div>
             </div>
 
-            <div class="row content-supporters-block">
-                <div class="col-md-9">
-                    <h2 class="about-title">Apoiadores</h2>
-
+            <div class="row content-sponsor-block">
+                <div class="row sponsor">
+                    <div class="col-md-12">
+                        <h2 class="about-title">Apoiadores</h2>
+                    </div>
                 </div>
-                <div class="col-md-3">
 
-                </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="sponsor-logo">
+                            <img src="assets/img/sponsors/1.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="sponsor-logo">
+                            <img src="assets/img/sponsors/1.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="sponsor-logo">
+                            <img src="assets/img/sponsors/1.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="sponsor-logo">
+                            <img src="" alt="">
+                        </div>
+                    </div>
+
+
             </div>
 
         </div>

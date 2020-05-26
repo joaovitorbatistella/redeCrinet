@@ -16,7 +16,6 @@ body {
     margin-bottom: 20px;
 }
 
-
 /* Logo principal */
 .content-logo-bar {
     display: flex;
@@ -29,6 +28,10 @@ body {
 
 .content-logo-bar img {
     max-height: 150px;
+
+}
+
+.content-logo-bar a {
     display: block;
 
     margin-left: 14%;
@@ -36,7 +39,6 @@ body {
 
     margin-top: 25px;
 }
-
 
 /* Primeiro container */
 .content-first-block {
@@ -308,13 +310,15 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-
-
+.sponsor {
+    padding-bottom: 15px;
+}
 
 /* Container apoiadores */
-.content-supporters-block {
+.content-sponsor-block {
     min-height: 300px;
     margin: 0 15% 100px 15%;
+    padding: 0 30px 30px 30px;
     display: block;
     background: #2F3832;
 
@@ -365,3 +369,15 @@ footer a img {
     width: 30px;
 }
 
+.sponsor-logo {
+    padding: 20px;
+    margin: 10px 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #e0e5fa;
+    border-bottom: 1px solid #e0e5fa;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.5);
+    height: 260px;
+}
