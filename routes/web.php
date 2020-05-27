@@ -18,6 +18,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 
 Auth::routes();
+Route::group(['middleware' => 'auth'], function(){
 
 Route::get('/news/show/{uuid}', 'HomeBackendController@show');
 Route::get('/backend', 'HomeBackendController@index')->name('home');
@@ -27,3 +28,5 @@ Route::get('/backend/category/create', 'CategoryBackendController@create');
 Route::post('/register/category', 'CategoryBackendController@store');
 Route::get('/news/delete/{uuid}', 'NewsBackendController@delete');
 Route::delete('/delete/{uuid}', 'NewsBackendController@destroy');
+
+});
