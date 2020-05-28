@@ -20,6 +20,8 @@ Route::get('/', 'HomeController@index')->name('home');
 Auth::routes();
 Route::group(['middleware' => 'auth'], function(){
 
+Route::post('/ajax/home', 'HomeBackendController@ajax')->name('ajax.home');
+
 Route::get('/news/show/{uuid}', 'HomeBackendController@show');
 Route::get('/backend', 'HomeBackendController@index')->name('home');
 Route::get('/backend/news/create', 'NewsBackendController@create');
