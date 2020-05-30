@@ -69,7 +69,7 @@
                 <div class="col-md-6 col-two-first-block">
                     <div class="row">
                         <div class="col-md-12 player-frame">
-                            <iframe width="80%" height="400px" src="https://www.youtube.com/embed/gHhj3JNQKCo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe width="80%" height="400px" src="https://www.youtube.com/embed/2DE-1VUlm1Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
@@ -233,26 +233,29 @@
 
                     event.preventDefault();
 
-                    var religionVar = $(this).find('input#religionInput').val();
+                    if (!$(".religion-news").length){
+
+                        var religionVar = $(this).find('input#religionInput').val();
 
 
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        url: "{{ route('ajax.home') }}",
-                        type: "POST",
-                        data: {title: religionVar},
-                        dataType: 'json',
-                        success: function(response) {
-                            $.each(response, function(index, item) {
-                                const {title, body, author, source, image} = item;
-                                $('#divReligion').html(
-                                "<h1>" + title + "</h1><h1>"+ body + "</h1>"
-                                );
-                            });
-                        }
-                    });
+                        $.ajax({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            url: "{{ route('ajax.home') }}",
+                            type: "POST",
+                            data: {title: religionVar},
+                            dataType: 'json',
+                            success: function(response) {
+                                $.each(response, function(index, item) {
+                                    const {title, body, author, source, image} = item;
+                                    $("#divReligion").append('<div class="news-flag"><p class="religion-news">'+title+'</p><p class="religion-news">'+body+'</p><p class="religion-news">'+author+'</p><p class="religion-news">'+source+'</p><img width="300px" src="'+image+'" /></div>');
+
+                                });
+                            }
+                        });
+
+                    }
 
                     a.style.display = "block";
                     b.style.display = "none";
@@ -279,6 +282,27 @@
                 var e = document.getElementById("educationId");
                 var f = document.getElementById("tipsId");
                 if (b.style.display === "none") {
+
+                    var policyVar = $(this).find('input#policyInput').val();
+
+
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: "{{ route('ajax.home') }}",
+                        type: "POST",
+                        data: {title: policyVar},
+                        dataType: 'json',
+                        success: function(response) {
+                            $.each(response, function(index, item) {
+                                const {title, body, author, source, image} = item;
+                                $("#divPolicy").append('<div class="news-flag"><p class="policy-news">'+title+'</p><p class="policy-news">'+body+'</p><p class="policy-news">'+author+'</p><p class="policy-news">'+source+'</p><img width="300px" src="'+image+'" /></div>');
+
+                            });
+                        }
+                    });
+
                     a.style.display = "none";
                     b.style.display = "block";
                     c.style.display = "none";
@@ -304,6 +328,27 @@
                 var e = document.getElementById("educationId");
                 var f = document.getElementById("tipsId");
                 if (c.style.display === "none") {
+
+                    var societyVar = $(this).find('input#societyInput').val();
+
+
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: "{{ route('ajax.home') }}",
+                        type: "POST",
+                        data: {title: societyVar},
+                        dataType: 'json',
+                        success: function(response) {
+                            $.each(response, function(index, item) {
+                                const {title, body, author, source, image} = item;
+                                $("#divSociety").append('<div class="news-flag"><p class="society-news">'+title+'</p><p class="society-news">'+body+'</p><p class="society-news">'+author+'</p><p class="society-news">'+source+'</p><img width="300px" src="'+image+'" /></div>');
+
+                            });
+                        }
+                    });
+
                     a.style.display = "none";
                     b.style.display = "none";
                     c.style.display = "block";
@@ -328,7 +373,29 @@
                 var d = document.getElementById("healthId");
                 var e = document.getElementById("educationId");
                 var f = document.getElementById("tipsId");
+
                 if (d.style.display === "none") {
+
+                    var healthVar = $(this).find('input#healthInput').val();
+
+
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: "{{ route('ajax.home') }}",
+                        type: "POST",
+                        data: {title: healthVar},
+                        dataType: 'json',
+                        success: function(response) {
+                            $.each(response, function(index, item) {
+                                const {title, body, author, source, image} = item;
+                                $("#divHealth").append('<div class="news-flag"><p class="health-news">'+title+'</p><p class="health-news">'+body+'</p><p class="health-news">'+author+'</p><p class="health-news">'+source+'</p><img width="300px" src="'+image+'" /></div>');
+
+                            });
+                        }
+                    });
+
                     a.style.display = "none";
                     b.style.display = "none";
                     c.style.display = "none";
@@ -354,6 +421,26 @@
                 var e = document.getElementById("educationId");
                 var f = document.getElementById("tipsId");
                 if (e.style.display === "none") {
+
+                    var educationVar = $(this).find('input#educationInput').val();
+
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: "{{ route('ajax.home') }}",
+                        type: "POST",
+                        data: {title: educationVar},
+                        dataType: 'json',
+                        success: function(response) {
+                            $.each(response, function(index, item) {
+                                const {title, body, author, source, image} = item;
+                                $("#divEducation").append('<div class="news-flag"><p class="education-news">'+title+'</p><p class="education-news">'+body+'</p><p class="education-news">'+author+'</p><p class="education-news">'+source+'</p><img width="300px" src="'+image+'" /></div>');
+
+                            });
+                        }
+                    });
+
                     a.style.display = "none";
                     b.style.display = "none";
                     c.style.display = "none";
@@ -379,6 +466,26 @@
                 var e = document.getElementById("educationId");
                 var f = document.getElementById("tipsId");
                 if (f.style.display === "none") {
+
+                    var tipsVar = $(this).find('input#tipsInput').val();
+
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: "{{ route('ajax.home') }}",
+                        type: "POST",
+                        data: {title: tipsVar},
+                        dataType: 'json',
+                        success: function(response) {
+                            $.each(response, function(index, item) {
+                                const {title, body, author, source, image} = item;
+                                $("#divTips").append('<div class="news-flag"><p class="tips-news">'+title+'</p><p class="tips-news">'+body+'</p><p class="tips-news">'+author+'</p><p class="tips-news">'+source+'</p><img width="300px" src="'+image+'" /></div>');
+
+                            });
+                        }
+                    });
+
                     a.style.display = "none";
                     b.style.display = "none";
                     c.style.display = "none";
