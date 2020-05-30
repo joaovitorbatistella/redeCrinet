@@ -14,4 +14,6 @@ class News extends Model
     public $incrementing = false;
 
     protected $fillable = ['uuid', 'title', 'body', 'author', 'source', 'image', 'category_id'];
+
+
 }

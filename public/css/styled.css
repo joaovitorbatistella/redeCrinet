@@ -127,6 +127,8 @@ body {
 
 .player-frame iframe {
     box-shadow: inset 0 0 1em rgb(85, 187, 121), 0 0 1em #2D7948;
+    width: 80%;
+    height: 400px;
 }
 
 
@@ -274,9 +276,6 @@ body {
 
 .col-about-right figure {
     padding: 20px;
-
-
-
 }
 
 .col-about-right figure img {
@@ -358,12 +357,74 @@ footer a img {
     background: rgba(255, 255, 255, 0.5);
     height: 260px;
 }
+.news-flag {
+    margin-bottom: 30px;
 
-.religion-news {
+}
+
+.title-news{
+    font-size: 32px;
+    font-family: 'Roboto', sans-serif;
+    color: #DBFBD3;
+    font-weight: bold;
+}
+
+.body-news{
+    font-size: 22px;
+    font-family: 'Roboto', sans-serif;
+    color: #DBFBD3
+}
+
+.author-news{
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
     color: #DBFBD3
 }
+
+.source-news{
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    color: #DBFBD3
+}
+
+.image-news{
+    width: 300px;
+    height: 200px;
+}
+
+.cfi-first h1 {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 25px;
+    text-align: center;
+
+    word-wrap: break-word;
+
+    color: #F4FFF1;
+
+}
+
+.cfi-first p {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 25px;
+    text-align: justify;
+
+    word-wrap: break-word;
+
+    color: #DBFBD3;
+
+}
+
+.cfi-second img {
+    margin-top: 20%;
+    max-width: 100%;
+}
+
 
 @media (max-width: 1715px) {
     .col-3 {

@@ -69,7 +69,7 @@
                 <div class="col-md-6 col-two-first-block">
                     <div class="row">
                         <div class="col-md-12 player-frame">
-                            <iframe width="80%" height="400px" src="https://www.youtube.com/embed/2DE-1VUlm1Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="1280" height="720" src="https://www.youtube.com/embed/JBDhaQIyX-8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
@@ -117,8 +117,7 @@
 
             <section id="news">
                 <div id="religionId" style="display: none" class="row news-container">
-                    <div id="divReligion" class="col-md-12 col-news-category">
-                        <h1>Religião</h1>
+                    <div id="divReligion" class="row col-news-category">
                     </div>
                 </div>
 
@@ -248,8 +247,11 @@
                             dataType: 'json',
                             success: function(response) {
                                 $.each(response, function(index, item) {
-                                    const {title, body, author, source, image} = item;
-                                    $("#divReligion").append('<div class="news-flag"><p class="religion-news">'+title+'</p><p class="religion-news">'+body+'</p><p class="religion-news">'+author+'</p><p class="religion-news">'+source+'</p><img width="300px" src="'+image+'" /></div>');
+                                    const {title, body, author, source, image, updated_at} = item;
+
+
+                                    // $("#divReligion").append('<div class="news-flag col-md-6"><p class="religion-news title-news">'+title+'</p><p class="religion-news body-news">'+body+'</p><p class="religion-news author-news">'+author+'</p><p class="religion-news source-news">'+source+'</p><img class="image-news" src="'+image+'" /></div>');
+                                    $("#divReligion").append('<div class="news-flag col-md-6"><h1 style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p style="font-size: 15px">'+updated_at+' por '+author+'</p><p>'+body+'</p><p style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img class="hover-shadow cursor" onclick="openModal();currentSlide(4)" src="'+image+'" /></div></div>');
 
                                 });
                             }
@@ -297,7 +299,7 @@
                         success: function(response) {
                             $.each(response, function(index, item) {
                                 const {title, body, author, source, image} = item;
-                                $("#divPolicy").append('<div class="news-flag"><p class="policy-news">'+title+'</p><p class="policy-news">'+body+'</p><p class="policy-news">'+author+'</p><p class="policy-news">'+source+'</p><img width="300px" src="'+image+'" /></div>');
+                                $("#divPolicy").append('<div class="news-flag col-md-6"><p class="policy-news">'+title+'</p><p class="policy-news">'+body+'</p><p class="policy-news">'+author+'</p><p class="policy-news">'+source+'</p><img width="300px" src="'+image+'" /></div>');
 
                             });
                         }
