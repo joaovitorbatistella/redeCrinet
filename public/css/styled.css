@@ -1,6 +1,8 @@
 /* Estilização principal */
 
-.retreat { text-indent:4em }
+.retreat {
+    text-indent:4em
+}
 
 body {
     flex: 1;
@@ -209,6 +211,8 @@ body {
 
 #religionId, #policyId, #societyId, #healthId, #educationId, #tipsId {
     margin: 0 8% 100px 8%;
+    padding-left: 2%;
+    padding-right: 2%;
     min-height: 720px;
     display: block;
     background: #2F3832;
@@ -359,7 +363,10 @@ footer a img {
 }
 .news-flag {
     margin-bottom: 30px;
-
+    background: rgba(70, 158, 111, 0.1);
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    max-height: 400px;
 }
 
 .title-news{
@@ -367,12 +374,21 @@ footer a img {
     font-family: 'Roboto', sans-serif;
     color: #DBFBD3;
     font-weight: bold;
+    background-color: rgba(167, 231, 204, 0.1);
+    border-radius: 30px;
+
 }
 
 .body-news{
     font-size: 22px;
     font-family: 'Roboto', sans-serif;
-    color: #DBFBD3
+    color: #DBFBD3;
+    white-space: normal;
+    padding-right: 10px;
+    height: 12em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    overflow: auto;
 }
 
 .author-news{
@@ -387,10 +403,6 @@ footer a img {
     color: #DBFBD3
 }
 
-.image-news{
-    width: 300px;
-    height: 200px;
-}
 
 .cfi-first h1 {
     font-family: 'Roboto', sans-serif;
@@ -420,9 +432,19 @@ footer a img {
 
 }
 
+.cfi-second {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+}
+
 .cfi-second img {
-    margin-top: 20%;
     max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
 }
 
 
@@ -501,3 +523,22 @@ footer a img {
         height: 200px;
     }
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #2D7948;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(28, 83, 47);
+  }

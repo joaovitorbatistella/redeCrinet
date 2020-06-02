@@ -247,11 +247,11 @@
                             dataType: 'json',
                             success: function(response) {
                                 $.each(response, function(index, item) {
-                                    const {title, body, author, source, image, updated_at} = item;
+                                    const {title, body, author, source, image, updated_at, created_at} = item;
 
+                                    console.log(item);
 
-                                    // $("#divReligion").append('<div class="news-flag col-md-6"><p class="religion-news title-news">'+title+'</p><p class="religion-news body-news">'+body+'</p><p class="religion-news author-news">'+author+'</p><p class="religion-news source-news">'+source+'</p><img class="image-news" src="'+image+'" /></div>');
-                                    $("#divReligion").append('<div class="news-flag col-md-6"><h1 style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p style="font-size: 15px">'+updated_at+' por '+author+'</p><p>'+body+'</p><p style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img class="hover-shadow cursor" onclick="openModal();currentSlide(4)" src="'+image+'" /></div></div>');
+                                    $("#divReligion").append('<div class="news-flag col-md-12"><h1 class="religion-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="religion-news author-news" style="font-size: 15px"> {{ date("M j, Y H:i", strtotime('+updated_at+')) }} por '+author+'</p><p class="religion-news  body-news retreat">'+body+'</p><p class="religion-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img src="'+image+'" /></div></div>');
 
                                 });
                             }
@@ -482,7 +482,7 @@
                         success: function(response) {
                             $.each(response, function(index, item) {
                                 const {title, body, author, source, image} = item;
-                                $("#divTips").append('<div class="news-flag"><p class="tips-news">'+title+'</p><p class="tips-news">'+body+'</p><p class="tips-news">'+author+'</p><p class="tips-news">'+source+'</p><img width="300px" src="'+image+'" /></div>');
+                                $("#divTips").append('<div class="news-flag"><p class="tips-news">'+title+'</p><p class="tips-news" >'+body+'</p><p class="tips-news">'+author+'</p><p class="tips-news">'+source+'</p><img width="300px" src="'+image+'" /></div>');
 
                             });
                         }
