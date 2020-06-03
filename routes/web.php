@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index')->name('home');
-
+Route::post('/ajax/home', 'HomeController@ajax')->name('ajax.home');
 
 
 Auth::routes();
 Route::group(['middleware' => 'auth'], function(){
 
-Route::post('/ajax/home', 'HomeBackendController@ajax')->name('ajax.home');
+
 
 Route::get('/news/show/{uuid}', 'HomeBackendController@show');
 Route::get('/backend', 'HomeBackendController@index')->name('home');

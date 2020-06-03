@@ -36,7 +36,7 @@
       <td>{{$res->source}}</td>
       <td><img width="220px" src="{{ asset($res->image) }}" /></td>
       <td>{{$res->nameCategory}}</td>
-      <td>{{$res->updated_at}}</td>
+      <td>{{ date('d/m/Y', strtotime($res->updated_at)) }} às {{ date('H:i', strtotime($res->updated_at)) }}</td>
       <td><a class="btn" href="/news/edit/{{$res->uuid}}">Editar</a></td>
       <td><a class="btn" href="/news/delete/{{$res->uuid}}">Excluir</a></td>
     </tr>

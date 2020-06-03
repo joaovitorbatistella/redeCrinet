@@ -54,13 +54,4 @@ class HomeBackendController extends Controller
 
 
     }
-
-    public function ajax(Request $request)
-    {
-
-        $category = categories::where('nameCategory', $request->title)->get()->first();
-        $news = News::where('category_id', $category->uuid)->get();
-
-        echo json_encode($news);
-    }
 }
