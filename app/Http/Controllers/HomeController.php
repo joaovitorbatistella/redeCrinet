@@ -30,6 +30,10 @@ class HomeController extends Controller
         ->orderBy('updated_at', 'desc')
         ->get();
 
+        foreach($news as $n){
+            $n->updated_at = \Carbon\Carbon::parse($n->updated_at)->format('d/m/Y h:m');
+        }
+
         echo json_encode($news);
     }
 }

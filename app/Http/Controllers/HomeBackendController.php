@@ -50,6 +50,7 @@ class HomeBackendController extends Controller
         ->select('categories.nameCategory', 'news.*')
         ->get();
         $result = $firstResult->firstWhere('uuid', $uuid);
+
         return view('backend.show', compact('result'));
 
 

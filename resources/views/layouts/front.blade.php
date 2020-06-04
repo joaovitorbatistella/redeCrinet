@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <link rel="icon" type="image/png" href="{{asset('images/logo.png')}}"/>
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -84,7 +86,7 @@
                     <div class="col-1">
                         <ul class="ul-left">
                             <li class="col-li-left">
-                                <a id="religion" value="religion" href="#news"><input hidden id="religionInput" value="religion" />Religião</a>
+                                <a id="religion" value="religion" href="#news"><input hidden class="religionInput" value="religion" />Religião</a>
                             </li>
                             <li class="col-li-left">
                                 <a id="policy" href="#news">Política</a>
@@ -151,6 +153,20 @@
                     </div>
                 </div>
             </section>
+
+            <div class="row content-toggle">
+                <div class="dropdown">
+                    <h1 style="color: white">Jornal Crinet</h1>
+                    <div class="dropdown-content">
+                        <a id="religion-mobile" href="#news"><input hidden class="religionInput" value="religion" /><p class="content-option" >Religião</p>
+                        <a id="a-mobile" href="#"><p class="content-option" >Política</p>
+                        <a id="b-mobile" href="#"><p class="content-option" >Sociedade</p>
+                        <a id="c-mobile" href="#"><p class="content-option" >Saúde</p>
+                        <a id="d-mobile" href="#"><p class="content-option" >Educação</p>
+                        <a id="e-mobile" href="#"><p class="content-option" >Dicas</p>
+                    </div>
+                </div>
+            </div>
 
             <div class="row content-about-block">
                 <div class="col-md-9 col-about-left">
@@ -221,7 +237,7 @@
 
         <!-- Scripts -->
         <script>
-            $('#religion').on('click',function(){
+            $('#religion-mobile,#religion').on('click',function(){
                 var a = document.getElementById("religionId");
                 var b = document.getElementById("policyId");
                 var c = document.getElementById("societyId");
@@ -234,7 +250,7 @@
 
                     if (!$(".religion-news").length){
 
-                        var religionVar = $(this).find('input#religionInput').val();
+                        var religionVar = $(this).find('input.religionInput').val();
 
 
                         $.ajax({
@@ -249,11 +265,9 @@
                                 $.each(response, function(index, item) {
                                     const {title, body, author, source, image, updated_at, created_at} = item;
 
+                                    console.log(item);
 
-                                    const dateFormated = 'date("H:i", strtotime('+updated_at+'))';
-                                    console.log(dateFormated);
-
-                                    $("#divReligion").append('<div class="news-flag col-md-12"><h1 class="religion-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="religion-news author-news" style="font-size: 15px"> '+dateFormated+' por '+author+'</p><p class="religion-news  body-news retreat">'+body+'</p><p class="religion-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img src="'+image+'" /></div></div>');
+                                    $("#divReligion").append('<div class="news-flag col-md-12"><h1 class="religion-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="religion-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="religion-news  body-news retreat">'+body+'</p><p class="religion-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img src="'+image+'" /></div></div>');
 
                                 });
                             }
