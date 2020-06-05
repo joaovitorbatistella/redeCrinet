@@ -26,6 +26,8 @@ Route::get('/news/show/{uuid}', 'HomeBackendController@show');
 Route::get('/backend', 'HomeBackendController@index')->name('home');
 Route::get('/backend/news/create', 'NewsBackendController@create');
 Route::post('/register/news', 'NewsBackendController@store');
+Route::get('/backend/events/create', 'EventsController@create');
+Route::post('/register/events', 'EventsController@store');
 Route::get('/backend/category/create', 'CategoryBackendController@create');
 Route::post('/register/category', 'CategoryBackendController@store');
 Route::get('/news/delete/{uuid}', 'NewsBackendController@delete');

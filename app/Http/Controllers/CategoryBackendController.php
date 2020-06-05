@@ -52,6 +52,7 @@ class CategoryBackendController extends Controller
         //se passou pelas validações, processa e salva no banco...
         $obj_Categories = new news();
         $obj_Categories->title = $request['title'];
+        $obj_Categories->type = $request['type'];
         $obj_Categories->save();
         return redirect('/backend')->with('success', 'Categoria criada com sucesso!!');
     }

@@ -4,7 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use YourAppRocks\EloquentUuid\Traits\HasUuid;
-use Carbon\Carbon;
 
 class News extends Model
 {
@@ -18,7 +17,4 @@ class News extends Model
 
     protected $dates = ['created_at', 'updated_at'];
 
-    public function getUpdatedAtAttribite($value) {
-        return Carbon::parse($value)->format('d-m-Y H:i');
-    }
 }

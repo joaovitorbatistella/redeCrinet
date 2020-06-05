@@ -457,6 +457,9 @@ footer a img {
     box-shadow: inset 0 0 1em rgb(86, 173, 117), 0 0 1em rgb(86, 173, 117);
 
     text-align: center;
+
+    display: none;
+
 }
 
 .dropdown {
@@ -531,6 +534,9 @@ footer a img {
     .content-search-block, .read-about {
         display: none;
     }
+    .content-toggle {
+        display: block;
+    }
   }
 
   @media (max-width: 1095px) {
@@ -546,9 +552,6 @@ footer a img {
 @media (max-width: 990px) {
     #facebook-main, #youtube-main{
         display: none;
-    }
-    .div-toggle{
-        display: block;
     }
     .cfi-second img {
         margin-top: 1%;

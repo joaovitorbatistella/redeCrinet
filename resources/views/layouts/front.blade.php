@@ -30,6 +30,7 @@
                 </div>
             </div>
 
+
             <div class="row content-first-block">
                 <div class="col-md-6 col-one-first-block">
                     <div class="container-event-title">
@@ -38,29 +39,14 @@
 
                 <div class="row-schedule">
                     <div class="w3-content w3-display-container">
-                        <div class="mySlides">
-                            <p class="event-title-frame">Missa da Paz de Cristo</p>
-                            <p class="event-hour-frame">29/05/2020 às 18:00</p>
-                            <p class="event-description-frame">Missa em celebração a Deus e ao povo</p>
-                        </div>
 
-                        <div class="mySlides">
-                            <p class="event-title-frame">Título2</p>
-                            <p class="event-hour-frame">Horário2</p>
-                            <p class="event-description-frame">Descrição2</p>
+                    @foreach($events as $event)
+                    <div class="mySlides">
+                            <p class="event-title-frame">{{$event->title}}</p>
+                            <p class="event-hour-frame">{{$event->description}}</p>
+                            <p class="event-description-frame">{{\Carbon\Carbon::parse($event->scheduledto)->format('d/m/Y')}} às {{ \Carbon\Carbon::parse($event->scheduledto)->format('H:i')}}</p>
                         </div>
-
-                        <div class="mySlides">
-                            <p class="event-title-frame">Título3</p>
-                            <p class="event-hour-frame">Horário3</p>
-                            <p class="event-description-frame">Descrição3</p>
-                        </div>
-
-                        <div class="mySlides">
-                            <p class="event-title-frame">Título4</p>
-                            <p class="event-hour-frame">Horário4</p>
-                            <p class="event-description-frame">Descrição4</p>
-                        </div>
+                    @endforeach
 
                         <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
                         <button class="w3-button w3-display-right" onclick="plusDivs(1)">&#10095;</button>
@@ -81,6 +67,7 @@
                     <h1 style="color: white">Leia sobre:</h1>
                 </div>
             </div>
+            <section id="news">
             <div class="row content-search-block">
                 <div class="col-md-12">
                     <div class="col-1">
@@ -117,7 +104,22 @@
                 </div>
             </div>
 
-            <section id="news">
+            <div class="row content-toggle">
+                <div class="dropdown">
+                    <h1 style="color: white">Jornal Crinet</h1>
+                    <div class="dropdown-content">
+                        <a id="religion-mobile" href="#news"><input hidden class="religionInput" value="religion" /><p class="content-option" >Religião</p>
+                        <a id="a-mobile" href="#"><p class="content-option" >Política</p></a>
+                        <a id="b-mobile" href="#"><p class="content-option" >Sociedade</p></a>
+                        <a id="c-mobile" href="#"><p class="content-option" >Saúde</p></a>
+                        <a id="d-mobile" href="#"><p class="content-option" >Educação</p></a>
+                        <a id="e-mobile" href="#"><p class="content-option" >Dicas</p></a>
+                    </div>
+                </div>
+            </div>
+
+
+
                 <div id="religionId" style="display: none" class="row news-container">
                     <div id="divReligion" class="row col-news-category">
                     </div>
@@ -154,19 +156,7 @@
                 </div>
             </section>
 
-            <div class="row content-toggle">
-                <div class="dropdown">
-                    <h1 style="color: white">Jornal Crinet</h1>
-                    <div class="dropdown-content">
-                        <a id="religion-mobile" href="#news"><input hidden class="religionInput" value="religion" /><p class="content-option" >Religião</p>
-                        <a id="a-mobile" href="#"><p class="content-option" >Política</p>
-                        <a id="b-mobile" href="#"><p class="content-option" >Sociedade</p>
-                        <a id="c-mobile" href="#"><p class="content-option" >Saúde</p>
-                        <a id="d-mobile" href="#"><p class="content-option" >Educação</p>
-                        <a id="e-mobile" href="#"><p class="content-option" >Dicas</p>
-                    </div>
-                </div>
-            </div>
+
 
             <div class="row content-about-block">
                 <div class="col-md-9 col-about-left">

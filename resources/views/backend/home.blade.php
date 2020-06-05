@@ -8,6 +8,7 @@
 <body>
     <h1>Olá</h1>
     <a href="/backend/news/create">Criar</a>
+    <a href="/backend/events/create">Criar Evento</a>
     <br>
     <table class="table">
   <thead>

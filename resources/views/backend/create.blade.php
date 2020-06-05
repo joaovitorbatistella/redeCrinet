@@ -82,13 +82,26 @@
             <div align="center" class="col-md-2" style="margin-top: 5%">
                 <button type="button" class="st-button" onclick="myFunction()"><i class="addIcon fas fa-plus-circle fa-3x"></i></button>
             </div>
-
         </div>
-        <div id="hidenDiv" style="display:none">
-            <label class="col-md-12">Nome da nova categoria: </label>
-            <div class="st-con-input">
-            <input type="text" maxlength="15" name="nameCategory" class="st-input form-control">
+
+        <div class="row" id="hidenDiv" style="display:none">
+            <div class="col-md-6">
+                <label class="col-md-12">Nome da nova categoria: </label>
+                <div class="st-con-input">
+                    <input type="text" maxlength="15" name="nameCategory" class="st-input form-control">
+                </div>
             </div>
+            <div align="center" class="col-md-2" style="margin-top: 5%">
+                <label class="col-md-12">Habilitar tipagem:</label>
+                <input type="checkbox"/>
+            </div>
+            <div class="col-md-4">
+                <label class="col-md-12">Tipo:</label>
+                <div class="st-con-input">
+                    <input type="text" maxlength="15" name="type" class="st-input form-control">
+                </div>
+            </div>
+
         </div>
 
 

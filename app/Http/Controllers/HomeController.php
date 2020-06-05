@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Events;
 use App\categories;
 use App\News;
 use Illuminate\Support\Facades\DB;
@@ -17,13 +18,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('layouts.front');
+        $eventsList = Events::all();
+
+        return view('layouts.front', ['events' => $eventsList]);
     }
 
     public function ajax(Request $request)
     {
         $category = DB::table('categories')
-        ->where('nameCategory', $request->title)->get()->first();
+        ->where('type', $request->title)->get()->first();
 
         $news = DB::table('news')
         ->where('category_id', $category->uuid)
@@ -31,7 +34,7 @@ class HomeController extends Controller
         ->get();
 
         foreach($news as $n){
-            $n->updated_at = \Carbon\Carbon::parse($n->updated_at)->format('d/m/Y h:m');
+            $n->updated_at = \Carbon\Carbon::parse($n->updated_at)->format('d/m/Y H:i');
         }
 
         echo json_encode($news);
