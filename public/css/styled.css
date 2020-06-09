@@ -60,42 +60,42 @@ body {
 
 .mySlides {
     display:none;
-    background-color: rgba(63, 167, 101, 0.5);
+    background-color: #147050;
     padding: 5%;
     border-radius: 15px;
     margin: 0 10px 0 10px;
-    box-shadow: inset 0 0 1em rgb(85, 187, 121), 0 0 1em #2D7948;
+    box-shadow: inset 0 0 1em #88fcd8;
 }
 
 .event-title {
     padding-top: 2%;
     font-family: 'Roboto', sans-serif;
-    color: #DBFBD3;
+    color: #e4f2ed;
     font-size: 38px;
 }
 
 .event-title-frame {
     font-family: 'Roboto', sans-serif;
-    color: #DBFBD3;
+    color: #e4f2ed;
     font-size: 30px;
 }
 
 .event-hour-frame {
     font-family: 'Roboto', sans-serif;
-    color: #DBFBD3;
+    color: #e4f2ed;
     font-size: 25px;
 }
 
 .event-description-frame {
     font-family: 'Roboto', sans-serif;
-    color: #DBFBD3;
+    color: #e4f2ed;
     font-size: 22px;
 }
 
 .w3-button {
-    background-color: #2D7948;
+    background-color: #147050;
     border-radius: 5px;
-    box-shadow: inset 0 0 1em rgb(85, 187, 121), 0 0 1em #2D7948;
+    box-shadow: inset 0 0 1em #88fcd8;
 }
 
 .container-event-title{
@@ -128,7 +128,7 @@ body {
 }
 
 .player-frame iframe {
-    box-shadow: inset 0 0 1em rgb(85, 187, 121), 0 0 1em #2D7948;
+    box-shadow: inset 0 0 1em rgb(85, 187, 121), 0 0 1em #88fcd8;
     width: 80%;
     height: 400px;
 }
@@ -140,8 +140,8 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0 40px 100px 40px;
-    background: #2D7948;
-    box-shadow: inset 0 0 1em rgb(85, 187, 121), 0 0 1em #2D7948;
+    background: #147050;
+    box-shadow: inset 0 0 1em #88fcd8;
 }
 
 .col-1 {
@@ -167,7 +167,7 @@ body {
     height: 0;
     border-left: 180px solid transparent;
     border-right: 180px solid transparent;
-    border-top: 130px solid #DBFBD3;
+    border-top: 130px solid #e4f2ed;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -214,7 +214,7 @@ body {
     padding-left: 2%;
     padding-right: 2%;
     display: block;
-    background: #2F3832;
+    background: #2e3636;
     border-top-left-radius: 80px;
     border-bottom-right-radius: 80px;
 }
@@ -225,14 +225,14 @@ body {
 
 .col-news-category h1{
     font-family: 'Roboto', sans-serif;
-    color: #DBFBD3
+    color: #e4f2ed
 }
 
 /* Container sobre */
 .content-about-block {
     margin: 0 10% 100px 10%;
     display: block;
-    background: #2F3832;
+    background: #2e3636;
     border-top-left-radius: 12px;
     border-bottom-right-radius: 12px;
 
@@ -240,7 +240,7 @@ body {
 }
 
 .about-title {
-    background-color: #DBFBD3;
+    background-color: #e4f2ed;
     display: inline-block;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
@@ -252,7 +252,7 @@ body {
     font-size: 34px;
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
-    color: #2D7948;
+    color: #1b7a71;
 }
 
 .col-about-left p {
@@ -267,7 +267,7 @@ body {
 
     text-justify: inter-word;
     text-align: justify;
-    color: #DBFBD3;
+    color: #e4f2ed;
 }
 
 .col-about-right {
@@ -288,7 +288,7 @@ body {
 
 .col-about-right figure {
     text-align: center;
-    color: #DBFBD3;
+    color: #e4f2ed;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -306,7 +306,7 @@ body {
     margin: 0 15% 100px 15%;
     padding: 0 30px 30px 30px;
     display: block;
-    background: #2F3832;
+    background: #2e3636;
 
     border-top-left-radius: 12px;
     border-bottom-right-radius: 12px;
@@ -318,7 +318,7 @@ body {
 /* Footer */
 
 footer {
-    background: #2D7948;
+    background: #147050;
     flex-direction: row;
     display: flex;
     justify-content: center;
@@ -337,7 +337,7 @@ footer p {
     margin-right: 15px;
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
-    color: #DBFBD3
+    color: #e4f2ed
 }
 
 footer a {
@@ -370,7 +370,7 @@ footer a img {
 .title-news{
     font-size: 32px;
     font-family: 'Roboto', sans-serif;
-    color: #DBFBD3;
+    color: #e4f2ed;
     font-weight: bold;
     background-color: rgba(167, 231, 204, 0.1);
     border-radius: 30px;
@@ -380,7 +380,7 @@ footer a img {
 .body-news{
     font-size: 22px;
     font-family: 'Roboto', sans-serif;
-    color: #DBFBD3;
+    color: #e4f2ed;
     white-space: normal;
     padding-right: 10px;
     height: 12em;
@@ -392,13 +392,13 @@ footer a img {
 .author-news{
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
-    color: #DBFBD3
+    color: #e4f2ed
 }
 
 .source-news{
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
-    color: #DBFBD3
+    color: #e4f2ed
 }
 
 
@@ -426,7 +426,7 @@ footer a img {
 
     word-wrap: break-word;
 
-    color: #DBFBD3;
+    color: #e4f2ed;
 
 }
 
@@ -449,7 +449,7 @@ footer a img {
     margin: 0 20% 100px 20%;
     padding: 0 30px 30px 30px;
     display: block;
-    background: #2D7948;
+    background: #147050;
 
     border-top-left-radius: 12px;
     border-bottom-right-radius: 12px;
@@ -479,7 +479,7 @@ footer a img {
 .content-option{
     padding: 5px;
 
-    background-color: #2F3832;
+    background-color: #2e3636;
     color: white;
     font-size: 25px;
 
@@ -513,7 +513,7 @@ footer a img {
         justify-content: center;
         align-items: center;
         margin: 0 300px 100px 300px;
-        background: #2D7948;
+        background: #147050;
     }
 
     .col-1, .col-3 {
@@ -576,7 +576,7 @@ footer a img {
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #2D7948;
+    background: #147050;
   }
 
   /* Handle on hover */
