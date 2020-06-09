@@ -39,4 +39,18 @@ class HomeController extends Controller
 
         echo json_encode($news);
     }
+
+    public function ajaxAll(Request $request)
+    {
+        $news = DB::table('news')
+        ->orderBy('updated_at', 'desc')
+        ->take(5)
+        ->get();
+
+        foreach($news as $n){
+            $n->updated_at = \Carbon\Carbon::parse($n->updated_at)->format('d/m/Y H:i');
+        }
+
+        echo json_encode($news);
+    }
 }

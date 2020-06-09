@@ -209,7 +209,7 @@ body {
     border-radius: 10px;
 }
 
-#religionId, #policyId, #societyId, #healthId, #educationId, #tipsId {
+#religionId, #cultureId, #societyId, #recreationId, #worldId, #lastNewsId {
     margin: 0 8% 100px 8%;
     padding-left: 2%;
     padding-right: 2%;

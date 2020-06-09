@@ -57,7 +57,7 @@
                 <div class="col-md-6 col-two-first-block">
                     <div class="row">
                         <div class="col-md-12 player-frame">
-                        <iframe width="1280" height="720" src="https://www.youtube.com/embed/JBDhaQIyX-8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="1280" height="720" src="https://www.youtube.com/embed/EEIk7gwjgIM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
@@ -73,13 +73,13 @@
                     <div class="col-1">
                         <ul class="ul-left">
                             <li class="col-li-left">
-                                <a id="religion" value="religion" href="#news"><input hidden class="religionInput" value="religion" />Religião</a>
+                                <a id="religion" href="#news"><input hidden class="religionInput" value="religion" />Religião</a>
                             </li>
                             <li class="col-li-left">
-                                <a id="policy" href="#news">Política</a>
+                                <a id="culture" href="#news"><input hidden class="cultureInput" value="culture" />Cultura</a>
                             </li>
                             <li class="col-li-left">
-                                <a id="society" href="#news">Sociedade</a>
+                                <a id="society" href="#news"><input hidden class="societyInput" value="society" />Sociedade</a>
                             </li>
                         </ul>
                     </div>
@@ -91,13 +91,13 @@
                     <div class="col-3">
                         <ul class="ul-right">
                             <li class="col-li-right">
-                                <a id="health" href="#news">Saúde</a>
+                                <a id="recreation" href="#news"><input hidden class="recreationInput" value="recreation" />Lazer</a>
                             </li>
                             <li class="col-li-right">
-                                <a id="education" href="#news">Educação</a>
+                                <a id="world" href="#news"><input hidden class="worldInput" value="world" />Mundo</a>
                             </li>
                             <li class="col-li-right">
-                                <a id="tips" href="#news">Dicas</a>
+                                <a id="lastNews" href="#news"><input hidden class="lastNewsInput" value="lastNews" />Últimas notícias</a>
                             </li>
                         </ul>
                     </div>
@@ -109,11 +109,11 @@
                     <h1 style="color: white">Jornal Crinet</h1>
                     <div class="dropdown-content">
                         <a id="religion-mobile" href="#news"><input hidden class="religionInput" value="religion" /><p class="content-option" >Religião</p>
-                        <a id="a-mobile" href="#"><p class="content-option" >Política</p></a>
-                        <a id="b-mobile" href="#"><p class="content-option" >Sociedade</p></a>
-                        <a id="c-mobile" href="#"><p class="content-option" >Saúde</p></a>
-                        <a id="d-mobile" href="#"><p class="content-option" >Educação</p></a>
-                        <a id="e-mobile" href="#"><p class="content-option" >Dicas</p></a>
+                        <a id="culture-mobile" href="#news"><input hidden class="cultureInput" value="culture" /><p class="content-option" >Cultura</p></a>
+                        <a id="society-mobile" href="#news"><input hidden class="societyInput" value="society" /><p class="content-option" >Sociedade</p></a>
+                        <a id="recreation-mobile" href="#news"><input hidden class="recreationInput" value="recreation" /><p class="content-option" >Lazer</p></a>
+                        <a id="world-mobile" href="#news"><input hidden class="worldInput" value="world" /><p class="content-option" >Mundo</p></a>
+                        <a id="lastNews-mobile" href="#news"><input hidden class="lastNewsInput" value="lastNews" /><p class="content-option" >Últimas notícias</p></a>
                     </div>
                 </div>
             </div>
@@ -125,33 +125,28 @@
                     </div>
                 </div>
 
-                <div id="policyId" style="display: none" class="row news-container">
-                    <div class="col-md-12 col-news-category">
-                        <h1>Política</h1>
+                <div id="cultureId" style="display: none" class="row news-container">
+                    <div id="divCulture" class="row col-news-category">
                     </div>
                 </div>
 
                 <div id="societyId" style="display: none" class="row news-container">
-                    <div class="col-md-12 col-news-category">
-                        <h1>Sociedade</h1>
+                    <div id="divSociety" class="row col-news-category">
                     </div>
                 </div>
 
-                <div id="healthId" style="display: none" class="row news-container">
-                    <div class="col-md-12 col-news-category">
-                        <h1>Saúde</h1>
+                <div id="recreationId" style="display: none" class="row news-container">
+                    <div id="divRecreation" class="row col-news-category">
                     </div>
                 </div>
 
-                <div id="educationId" style="display: none" class="row news-container">
-                    <div class="col-md-12 col-news-category">
-                        <h1>Educação</h1>
+                <div id="worldId" style="display: none" class="row news-container">
+                    <div id="divWorld" class="row col-news-category">
                     </div>
                 </div>
 
-                <div id="tipsId" style="display: none" class="row news-container">
-                    <div class="col-md-12 col-news-category">
-                        <h1>Dicas</h1>
+                <div id="lastNewsId" style="display: none" class="row news-container">
+                    <div id="divLastNews" class="row col-news-category">
                     </div>
                 </div>
             </section>
@@ -179,6 +174,78 @@
                         <h2 class="about-title">Apoiadores</h2>
                     </div>
                 </div>
+
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="sponsor-logo">
+                            <img src="assets/img/sponsors/1.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="sponsor-logo">
+                            <img src="assets/img/sponsors/1.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="sponsor-logo">
+                            <img src="assets/img/sponsors/1.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="sponsor-logo">
+                            <img src="assets/img/sponsors/1.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="sponsor-logo">
+                            <img src="assets/img/sponsors/1.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="sponsor-logo">
+                            <img src="assets/img/sponsors/1.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="sponsor-logo">
+                            <img src="assets/img/sponsors/1.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="sponsor-logo">
+                            <img src="assets/img/sponsors/1.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="sponsor-logo">
+                            <img src="assets/img/sponsors/1.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="sponsor-logo">
+                            <img src="assets/img/sponsors/1.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="sponsor-logo">
+                            <img src="assets/img/sponsors/1.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="sponsor-logo">
+                            <img src="assets/img/sponsors/1.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
 
                     <div class="col-lg-3 col-md-4 col-xs-6">
                         <div class="sponsor-logo">
@@ -229,11 +296,11 @@
         <script>
             $('#religion-mobile,#religion').on('click',function(){
                 var a = document.getElementById("religionId");
-                var b = document.getElementById("policyId");
+                var b = document.getElementById("cultureId");
                 var c = document.getElementById("societyId");
-                var d = document.getElementById("healthId");
-                var e = document.getElementById("educationId");
-                var f = document.getElementById("tipsId");
+                var d = document.getElementById("recreationId");
+                var e = document.getElementById("worldId");
+                var f = document.getElementById("lastNewsId");
                 if (a.style.display === "none") {
 
                     event.preventDefault();
@@ -282,34 +349,43 @@
 
             });
 
-            $('#policy').on('click',function(){
+            $('#culture-mobile,#culture').on('click',function(){
                 var a = document.getElementById("religionId");
-                var b = document.getElementById("policyId");
+                var b = document.getElementById("cultureId");
                 var c = document.getElementById("societyId");
-                var d = document.getElementById("healthId");
-                var e = document.getElementById("educationId");
-                var f = document.getElementById("tipsId");
+                var d = document.getElementById("recreationId");
+                var e = document.getElementById("worldId");
+                var f = document.getElementById("lastNewsId");
                 if (b.style.display === "none") {
 
-                    var policyVar = $(this).find('input#policyInput').val();
+                    event.preventDefault();
+
+                    if (!$(".culture-news").length){
+
+                        var cultureVar = $(this).find('input.cultureInput').val();
 
 
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        url: "{{ route('ajax.home') }}",
-                        type: "POST",
-                        data: {title: policyVar},
-                        dataType: 'json',
-                        success: function(response) {
-                            $.each(response, function(index, item) {
-                                const {title, body, author, source, image} = item;
-                                $("#divPolicy").append('<div class="news-flag col-md-6"><p class="policy-news">'+title+'</p><p class="policy-news">'+body+'</p><p class="policy-news">'+author+'</p><p class="policy-news">'+source+'</p><img width="300px" src="'+image+'" /></div>');
+                        $.ajax({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            url: "{{ route('ajax.home') }}",
+                            type: "POST",
+                            data: {title: cultureVar},
+                            dataType: 'json',
+                            success: function(response) {
+                                $.each(response, function(index, item) {
+                                    const {title, body, author, source, image, updated_at, created_at} = item;
 
-                            });
-                        }
-                    });
+                                    console.log(item);
+
+                                    $("#divCulture").append('<div class="news-flag col-md-12"><h1 class="culture-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="culture-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="culture-news  body-news retreat">'+body+'</p><p class="culture-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img src="'+image+'" /></div></div>');
+
+                                });
+                            }
+                        });
+
+                    }
 
                     a.style.display = "none";
                     b.style.display = "block";
@@ -328,34 +404,43 @@
 
             });
 
-            $('#society').on('click',function(){
+            $('#society-mobile,#society').on('click',function(){
                 var a = document.getElementById("religionId");
-                var b = document.getElementById("policyId");
+                var b = document.getElementById("cultureId");
                 var c = document.getElementById("societyId");
-                var d = document.getElementById("healthId");
-                var e = document.getElementById("educationId");
-                var f = document.getElementById("tipsId");
+                var d = document.getElementById("recreationId");
+                var e = document.getElementById("worldId");
+                var f = document.getElementById("lastNewsId");
                 if (c.style.display === "none") {
 
-                    var societyVar = $(this).find('input#societyInput').val();
+                    event.preventDefault();
+
+                    if (!$(".society-news").length){
+
+                        var societyVar = $(this).find('input.societyInput').val();
 
 
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        url: "{{ route('ajax.home') }}",
-                        type: "POST",
-                        data: {title: societyVar},
-                        dataType: 'json',
-                        success: function(response) {
-                            $.each(response, function(index, item) {
-                                const {title, body, author, source, image} = item;
-                                $("#divSociety").append('<div class="news-flag"><p class="society-news">'+title+'</p><p class="society-news">'+body+'</p><p class="society-news">'+author+'</p><p class="society-news">'+source+'</p><img width="300px" src="'+image+'" /></div>');
+                        $.ajax({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            url: "{{ route('ajax.home') }}",
+                            type: "POST",
+                            data: {title: societyVar},
+                            dataType: 'json',
+                            success: function(response) {
+                                $.each(response, function(index, item) {
+                                    const {title, body, author, source, image, updated_at, created_at} = item;
 
-                            });
-                        }
-                    });
+                                    console.log(item);
+
+                                    $("#divSociety").append('<div class="news-flag col-md-12"><h1 class="society-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="society-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="society-news  body-news retreat">'+body+'</p><p class="society-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img src="'+image+'" /></div></div>');
+
+                                });
+                            }
+                        });
+
+                    }
 
                     a.style.display = "none";
                     b.style.display = "none";
@@ -374,35 +459,43 @@
 
             });
 
-            $('#health').on('click',function(){
+            $('#recreation-mobile,#recreation').on('click',function(){
                 var a = document.getElementById("religionId");
-                var b = document.getElementById("policyId");
+                var b = document.getElementById("cultureId");
                 var c = document.getElementById("societyId");
-                var d = document.getElementById("healthId");
-                var e = document.getElementById("educationId");
-                var f = document.getElementById("tipsId");
-
+                var d = document.getElementById("recreationId");
+                var e = document.getElementById("worldId");
+                var f = document.getElementById("lastNewsId");
                 if (d.style.display === "none") {
 
-                    var healthVar = $(this).find('input#healthInput').val();
+                    event.preventDefault();
+
+                    if (!$(".recreation-news").length){
+
+                        var recreationVar = $(this).find('input.recreationInput').val();
 
 
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        url: "{{ route('ajax.home') }}",
-                        type: "POST",
-                        data: {title: healthVar},
-                        dataType: 'json',
-                        success: function(response) {
-                            $.each(response, function(index, item) {
-                                const {title, body, author, source, image} = item;
-                                $("#divHealth").append('<div class="news-flag"><p class="health-news">'+title+'</p><p class="health-news">'+body+'</p><p class="health-news">'+author+'</p><p class="health-news">'+source+'</p><img width="300px" src="'+image+'" /></div>');
+                        $.ajax({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            url: "{{ route('ajax.home') }}",
+                            type: "POST",
+                            data: {title: recreationVar},
+                            dataType: 'json',
+                            success: function(response) {
+                                $.each(response, function(index, item) {
+                                    const {title, body, author, source, image, updated_at, created_at} = item;
 
-                            });
-                        }
-                    });
+                                    console.log(item);
+
+                                    $("#divRecreation").append('<div class="news-flag col-md-12"><h1 class="recreation-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="recreation-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="recreation-news  body-news retreat">'+body+'</p><p class="recreation-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img src="'+image+'" /></div></div>');
+
+                                });
+                            }
+                        });
+
+                    }
 
                     a.style.display = "none";
                     b.style.display = "none";
@@ -421,33 +514,43 @@
 
             });
 
-            $('#education').on('click',function(){
+            $('#world-mobile,#world').on('click',function(){
                 var a = document.getElementById("religionId");
-                var b = document.getElementById("policyId");
+                var b = document.getElementById("cultureId");
                 var c = document.getElementById("societyId");
-                var d = document.getElementById("healthId");
-                var e = document.getElementById("educationId");
-                var f = document.getElementById("tipsId");
+                var d = document.getElementById("recreationId");
+                var e = document.getElementById("worldId");
+                var f = document.getElementById("lastNewsId");
                 if (e.style.display === "none") {
 
-                    var educationVar = $(this).find('input#educationInput').val();
+                    event.preventDefault();
 
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        url: "{{ route('ajax.home') }}",
-                        type: "POST",
-                        data: {title: educationVar},
-                        dataType: 'json',
-                        success: function(response) {
-                            $.each(response, function(index, item) {
-                                const {title, body, author, source, image} = item;
-                                $("#divEducation").append('<div class="news-flag"><p class="education-news">'+title+'</p><p class="education-news">'+body+'</p><p class="education-news">'+author+'</p><p class="education-news">'+source+'</p><img width="300px" src="'+image+'" /></div>');
+                    if (!$(".world-news").length){
 
-                            });
-                        }
-                    });
+                        var worldVar = $(this).find('input.worldInput').val();
+
+
+                        $.ajax({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            url: "{{ route('ajax.home') }}",
+                            type: "POST",
+                            data: {title: worldVar},
+                            dataType: 'json',
+                            success: function(response) {
+                                $.each(response, function(index, item) {
+                                    const {title, body, author, source, image, updated_at, created_at} = item;
+
+                                    console.log(item);
+
+                                    $("#divWorld").append('<div class="news-flag col-md-12"><h1 class="World-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="World-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="World-news  body-news retreat">'+body+'</p><p class="World-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img src="'+image+'" /></div></div>');
+
+                                });
+                            }
+                        });
+
+                    }
 
                     a.style.display = "none";
                     b.style.display = "none";
@@ -466,33 +569,43 @@
 
             });
 
-            $('#tips').on('click',function(){
+            $('#lastNews-mobile,#lastNews').on('click',function(){
                 var a = document.getElementById("religionId");
-                var b = document.getElementById("policyId");
+                var b = document.getElementById("cultureId");
                 var c = document.getElementById("societyId");
-                var d = document.getElementById("healthId");
-                var e = document.getElementById("educationId");
-                var f = document.getElementById("tipsId");
+                var d = document.getElementById("recreationId");
+                var e = document.getElementById("worldId");
+                var f = document.getElementById("lastNewsId");
                 if (f.style.display === "none") {
 
-                    var tipsVar = $(this).find('input#tipsInput').val();
+                    event.preventDefault();
 
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        url: "{{ route('ajax.home') }}",
-                        type: "POST",
-                        data: {title: tipsVar},
-                        dataType: 'json',
-                        success: function(response) {
-                            $.each(response, function(index, item) {
-                                const {title, body, author, source, image} = item;
-                                $("#divTips").append('<div class="news-flag"><p class="tips-news">'+title+'</p><p class="tips-news" >'+body+'</p><p class="tips-news">'+author+'</p><p class="tips-news">'+source+'</p><img width="300px" src="'+image+'" /></div>');
+                    if (!$(".lastNews-news").length){
 
-                            });
-                        }
-                    });
+                        var lastNewsVar = $(this).find('input.lastNewsInput').val();
+
+
+                        $.ajax({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            url: "{{ route('ajaxAll.home') }}",
+                            type: "POST",
+                            data: {title: lastNewsVar},
+                            dataType: 'json',
+                            success: function(response) {
+                                $.each(response, function(index, item) {
+                                    const {title, body, author, source, image, updated_at, created_at} = item;
+
+                                    console.log(item);
+
+                                    $("#divLastNews").append('<div class="news-flag col-md-12"><h1 class="lastNews-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="lastNews-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="lastNews-news  body-news retreat">'+body+'</p><p class="lastNews-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img src="'+image+'" /></div></div>');
+
+                                });
+                            }
+                        });
+
+                    }
 
                     a.style.display = "none";
                     b.style.display = "none";

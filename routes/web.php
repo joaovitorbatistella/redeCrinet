@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::post('/ajax/home', 'HomeController@ajax')->name('ajax.home');
+Route::post('/ajaxAll/home', 'HomeController@ajaxAll')->name('ajaxAll.home');
 
 
 Auth::routes();
