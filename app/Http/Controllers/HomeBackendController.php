@@ -32,11 +32,18 @@ class HomeBackendController extends Controller
         /* $newsList = News::all();
         return view('backend.home', ['new' => $newsList]); */
 
-        $result = DB::table('news')
+        $news = DB::table('news')
         ->join('categories', 'categories.uuid', '=', 'news.category_id')
         ->select('categories.nameCategory', 'news.*')
+        ->orderBy('updated_at', 'desc')
         ->get();
-        return view('backend.home', compact('result'));
+        $categories = DB::table('categories')
+        ->orderBy('updated_at', 'desc')
+        ->get();
+        $events = DB::table('events')
+        ->orderBy('scheduledto', 'desc')
+        ->get();
+        return view('backend.home',['news' => $news, 'categories' => $categories, 'events' => $events]);
 
 
     }
