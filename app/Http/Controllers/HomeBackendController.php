@@ -29,9 +29,6 @@ class HomeBackendController extends Controller
      */
     public function index()
     {
-        /* $newsList = News::all();
-        return view('backend.home', ['new' => $newsList]); */
-
         $news = DB::table('news')
         ->join('categories', 'categories.uuid', '=', 'news.category_id')
         ->select('categories.nameCategory', 'news.*')
@@ -44,22 +41,5 @@ class HomeBackendController extends Controller
         ->orderBy('scheduledto', 'desc')
         ->get();
         return view('backend.home',['news' => $news, 'categories' => $categories, 'events' => $events]);
-
-
-    }
-    public function show($uuid)
-    {
-        /* $news = News::where("uuid", $uuid)->get()->first();
-        return view('backend.show', ['new' => $news]); */
-
-        $firstResult = DB::table('news')
-        ->join('categories', 'categories.uuid', '=', 'news.category_id')
-        ->select('categories.nameCategory', 'news.*')
-        ->get();
-        $result = $firstResult->firstWhere('uuid', $uuid);
-
-        return view('backend.show', compact('result'));
-
-
     }
 }

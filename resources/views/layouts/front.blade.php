@@ -171,7 +171,7 @@
             <div class="row content-sponsor-block">
                 <div class="row sponsor">
                     <div class="col-md-12">
-                        <h2 class="about-title">Apoiadores</h2>
+                        <h2 class="about-title">Apoio Cultural</h2>
                     </div>
                 </div>
 

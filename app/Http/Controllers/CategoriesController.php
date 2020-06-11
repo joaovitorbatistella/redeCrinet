@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
-class CategoryBackendController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -27,9 +27,15 @@ class CategoryBackendController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
+    public function show($id)
+    {
+        $categories = categories::where("uuid", $uuid)->get()->first();
+        return view('backend.categories.show', ['categories' => $categories]);
+    }
+
     public function create()
     {
-        return view('backend.create');
+        return view('backend.categories.create');
     }
 
     public function store()
@@ -55,5 +61,21 @@ class CategoryBackendController extends Controller
         $obj_Categories->type = $request['type'];
         $obj_Categories->save();
         return redirect('/backend')->with('success', 'Categoria criada com sucesso!!');
+    }
+
+    public function delete($uuid)
+    {
+
+        $obj_Categories = categories::find($uuid);
+        return view('backend.categories.delete', ['categories' => $obj_Categories]);
+    }
+
+    public function destroy($uuid)
+    {
+        $obj_Categories = categories::findOrFail($uuid);
+
+        $obj_Categories->delete($uuid);
+
+        return Redirect('/backend')->with('sucess', 'Categoria excluída com Sucesso!');
     }
 }

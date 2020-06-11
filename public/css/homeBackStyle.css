@@ -8,6 +8,14 @@ body {
     margin: 20px 0 80px 0;
 }
 
+.row-news {
+    margin-bottom: 50px;
+}
+
+.row-event-categories {
+    margin-bottom: 30px;
+}
+
 table {
     opacity: 0.9;
     border-top-left-radius: 50px;
@@ -67,6 +75,34 @@ a, th, td, h1 {
     overflow: auto;
 }
 
+.table-news {
+    max-height: 550px;
+    overflow-y: scroll;
+}
+
+.table-event {
+    max-height: 450px;
+    overflow-y: scroll;
+}
+
+.table-categories {
+    max-height: 450px;
+    overflow-y: scroll;
+}
+
+.btn-details {
+    color: ivory;
+    border-color: ivory;
+    text-decoration: none;
+}
+
+.btn-details:hover {
+    color: #b11e1e;
+    background-color: ivory;
+    text-decoration: none;
+}
+
+
 footer {
     background: #2e0808;
     flex-direction: row;
@@ -116,3 +152,114 @@ footer a img {
   ::-webkit-scrollbar-thumb:hover {
     background: #0c0202;
   }
+
+
+/* FORMULÁRIOS */
+
+.form-style {
+    max-width: 800px;
+    padding: 10px;
+    margin: auto auto;
+    border-radius: 20px;
+}
+
+.st-input, .st-select {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    flex: 1;
+    background: transparent;
+    border: 0;
+    color: #232129;
+    overflow:hidden
+}
+
+.st-input:focus {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    flex: 1;
+    background: transparent;
+    border: 0;
+    color: #232129;
+  }
+
+  .st-select select:focus {
+    background: #f4ede8;
+    border-radius: 10px;
+    border: 2px solid #4b1414;
+    padding: 8px;
+    font-size: 15px;
+  }
+
+.st-con-input {
+    background: #f4ede8;
+    border-radius: 10px;
+    padding: 8px;
+    width: 100%;
+
+    border: 3px solid #4b1414;
+    color: #4b1414;
+
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+label {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    font-size: 18px;
+}
+
+.form-title {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    text-align: center;
+    padding: 1px;
+    margin-bottom: 40px;
+}
+
+.bottuns {
+    margin-top: 25px;
+}
+
+.addIcon {
+    color: #f4ede8;
+    border: 4px solid #4b1414;
+    border-radius: 50%;
+}
+
+.st-button{
+    background: transparent;
+    border-radius: 50%;
+    border: transparent;
+}
+
+
+/*SHOW*/
+.p-show {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    color: ivory
+}
+
+.img-show{
+    width: 500px;
+}
+
+
+/*DELETE*/
+.p-delete {
+    color: ivory;
+    font-size: 25px;
+}
+
+.btn-index {
+    color: white;
+    border-color: ivory;
+    margin-left: 20px;
+}
+
+.btn-index:hover{
+    color: #692020;
+    background-color: ivory;
+}
