@@ -23,17 +23,17 @@
 
     <!-- Styles -->
 
-    <title>Deletar notícia?</title>
+    <title>Deletar evento?</title>
 </head>
 <body>
 
-       <form class="form-style" action="/backend/news/delete/{{$news->uuid}}" method="post">
+       <form class="form-style" action="/backend/events/delete/{{$events->uuid}}" method="post">
        <div class="col-md-12">
-            <h1 class="form-title">Formulário de Exclusão de Notícias</h1>
+            <h1 class="form-title">Formulário de Exclusão de Eventos</h1>
        </div>
        {{ csrf_field() }}
         {{ method_field('DELETE') }}
-        <p class="p-delete">Deseja mesmo excluir <strong>{{$news->title}}</strong> ?</p>
+        <p class="p-delete">Deseja mesmo excluir <strong>{{$events->title}}</strong> ?</p>
 
         <div class="col-md-12" align="center">
             <button class="btn btn-danger" type="submit">Deletar</button>

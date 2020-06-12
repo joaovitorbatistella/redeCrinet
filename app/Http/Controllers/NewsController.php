@@ -49,7 +49,7 @@ class NewsController extends Controller
 
     public function store(Request $request)
     {
-        // dados
+
         $messages = array(
             'title.required' => 'É obrigatório um título para a notícia',
             'body.required' => 'É obrigatório um corpo para a notícia',
@@ -58,7 +58,7 @@ class NewsController extends Controller
 
 
         );
-        //vetor com as especificações de validações
+
         $regras = array(
             'title' => 'required|string',
             'body' => 'required|string',
@@ -67,9 +67,9 @@ class NewsController extends Controller
 
         );
 
-        //cria o objeto com as regras de validação
+
         $validador = Validator::make($request->all(), $regras, $messages);
-        //executa as validações
+
         if ($validador->fails()) {
             return redirect('backend/news/create')
             ->withErrors($validador)
@@ -118,11 +118,134 @@ class NewsController extends Controller
 
                 $obj_News = News::findOrFail($news->uuid);
                 $obj_News->image = '/storage/'.$path;
+                $obj_News->category_id = $request['category_id'];
+                $obj_News->save();
+             } else {
+                $news = News::create($request->except('image', 'category_id'));
+
+                $obj_News = News::findOrFail($news->uuid);
+                $obj_News->category_id = $request['category_id'];
+                $obj_News->save();
+            }
+
+        }
+        return redirect('/backend')->with('success', 'Notícia adicionada com sucesso!!');
+    }
+    public function edit($uuid)
+    {
+        $news = DB::table('news')
+        ->join('categories', 'categories.uuid', '=', 'news.category_id')
+        ->select('categories.nameCategory', 'news.*')
+        ->get();
+        $newsOnce = $news->firstWhere('uuid', $uuid);
+        $obj_Categories = categories::all();
+
+
+        return view('backend.news.edit', ['news' => $newsOnce, 'categories' => $obj_Categories]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\atendimento  $atividade
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request,  $uuid)
+    {
+
+        // dados
+        $messages = array(
+            'title.required' => 'É obrigatório um título para a notícia',
+            'body.required' => 'É obrigatório um corpo para a notícia',
+            'author.required' => 'É obrigatório informar um autor para a notícia',
+            'source.required' => 'É obrigatório informar uma fonte para a notícia',
+
+
+        );
+        //vetor com as especificações de validações
+        $regras = array(
+            'title' => 'required|string',
+            'body' => 'required|string',
+            'author' => 'required|string',
+            'source' => 'required|string',
+
+        );
+
+        //cria o objeto com as regras de validação
+        $validador = Validator::make($request->all(), $regras, $messages);
+        //executa as validações
+        if ($validador->fails()) {
+            return redirect('backend/news/create')
+            ->withErrors($validador)
+            ->withInput($request->all);
+        }
+
+
+        if (!empty($request['nameCategory'])) {
+
+            if ($request->hasFile('images')) {
+                $category = categories::create($request->all());
+
+                $images = $request->file('images');
+
+                foreach($images as $image) {
+                    $destination = '/images/'.'news/'.$uuid;
+                    $path = $image->store($destination, 'public');
+                }
+
+                $obj_News = News::findOrFail($uuid);
+                $obj_News->title = $request['title'];
+                $obj_News->body = $$request['body'];
+                $obj_News->author = $$request['author'];
+                $obj_News->source = $$request['source'];
+                $obj_News->category_id = $category->uuid;
+                $obj_News->image = '/storage/'.$path;
+                $obj_News->save();
+
+             } else {
+                $category = categories::create($request->all());
+
+                $obj_News = News::findOrFail($uuid);
+                $obj_News->title = $request['title'];
+                $obj_News->body = $$request['body'];
+                $obj_News->author = $$request['author'];
+                $obj_News->source = $$request['source'];
+                $obj_News->category_id = $category->uuid;
+                $obj_News->save();
+             }
+
+        } else {
+            if ($request->hasFile('images')) {
+
+                $images = $request->file('images');
+
+                foreach($images as $image) {
+                    $destination = '/images/'.'news/'.$uuid;
+                    $path = $image->store($destination, 'public');
+                }
+
+                $obj_News = News::findOrFail($uuid);
+                $obj_News->title = $request['title'];
+                $obj_News->body = $request['body'];
+                $obj_News->author = $request['author'];
+                $obj_News->source = $request['source'];
+                $obj_News->image = '/storage/'.$path;
+                $obj_News->category_id = $request['category_id'];
+                $obj_News->save();
+             } else {
+                $obj_News = News::findOrFail($uuid);
+                $obj_News->title = $request['title'];
+                $obj_News->body = $request['body'];
+                $obj_News->author = $request['author'];
+                $obj_News->source = $request['source'];
+                $obj_News->category_id = $request['category_id'];
                 $obj_News->save();
              }
 
         }
-        return redirect('/backend')->with('success', 'Notícia adicionada com sucesso!!');
+
+        return redirect('/backend')->with('success', 'Atendimento atualizada com sucesso!!');
     }
 
     public function delete($uuid)

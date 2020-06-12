@@ -48,7 +48,7 @@
         <tbody>
         @foreach ($news as $res)
             <tr>
-                <td><a class="btn btn-details" href="/news/show/{{$res->uuid}}">Detalhes</a></td>
+                <td><a class="btn btn-details" href="/backend/news/show/{{$res->uuid}}">Detalhes</a></td>
                 <td>{{$res->title}}</td>
                 <td class="td-body"><p class="body-news">{{$res->body}}</p></td>
                 <td>{{$res->author}}</td>
@@ -56,8 +56,8 @@
                 <td><img width="110px" src="{{ asset($res->image) }}" /></td>
                 <td>{{$res->nameCategory}}</td>
                 <td>{{ date('d/m/Y', strtotime($res->updated_at)) }} às {{ date('H:i', strtotime($res->updated_at)) }}</td>
-                <td><a class="btn edit-news-btn" href="/news/edit/{{$res->uuid}}">Editar</a></td>
-                <td><a class="btn delete-news-btn" href="/news/delete/{{$res->uuid}}">Excluir</a></td>
+                <td><a class="btn edit-news-btn" href="/backend/news/edit/{{$res->uuid}}">Editar</a></td>
+                <td><a class="btn delete-news-btn" href="/backend/news/delete/{{$res->uuid}}">Excluir</a></td>
             </tr>
             @endforeach
         </tbody>
@@ -89,12 +89,12 @@
         <tbody>
         @foreach ($events as $evt)
             <tr>
-                <td><a class="btn btn-details" href="/event/show/{{$evt->uuid}}">Detealhes</a></td>
+                <td><a class="btn btn-details" href="/backend/event/show/{{$evt->uuid}}">Detealhes</a></td>
+                <td>{{$evt->title}}</td>
                 <td>{{$evt->description}}</td>
-                <td>{{$evt->scheduledto}}</td>
-                <td>{{ date('d/m/Y', strtotime($evt->updated_at)) }} às {{ date('H:i', strtotime($evt->updated_at)) }}</td>
-                <td><a class="btn edit-news-btn" href="/news/edit/{{$evt->uuid}}">Editar</a></td>
-                <td><a class="btn delete-news-btn" href="/news/delete/{{$evt->uuid}}">Excluir</a></td>
+                <td>{{ date('d/m/Y', strtotime($evt->scheduledto)) }} às {{ date('H:i', strtotime($evt->scheduledto)) }}</td>
+                <td><a class="btn edit-news-btn" href="/backend/events/edit/{{$evt->uuid}}">Editar</a></td>
+                <td><a class="btn delete-news-btn" href="/backend/events/delete/{{$evt->uuid}}">Excluir</a></td>
             </tr>
             @endforeach
         </tbody>
@@ -121,12 +121,12 @@
         <tbody>
         @foreach ($categories as $cat)
             <tr>
-                <td><a class="btn btn-details" href="/categories/show/{{$cat->uuid}}">Detalhes</a></td>
+                <td><a class="btn btn-details" href="/backend/categories/show/{{$cat->uuid}}">Detalhes</a></td>
                 <td>{{$cat->nameCategory}}</td>
                 <td>{{$cat->type}}</td>
                 <td>{{ date('d/m/Y', strtotime($cat->updated_at)) }} às {{ date('H:i', strtotime($cat->updated_at)) }}</td>
-                <td><a class="btn edit-news-btn" href="/news/edit/{{$cat->uuid}}">Editar</a></td>
-                <td><a class="btn delete-news-btn" href="/news/delete/{{$cat->uuid}}">Excluir</a></td>
+                <td><a class="btn edit-news-btn" href="/backend/categories/edit/{{$cat->uuid}}">Editar</a></td>
+                <td><a class="btn delete-news-btn" href="/backend/categories/delete/{{$cat->uuid}}">Excluir</a></td>
             </tr>
             @endforeach
         </tbody>

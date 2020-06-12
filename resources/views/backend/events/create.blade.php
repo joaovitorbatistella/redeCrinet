@@ -24,7 +24,7 @@
 
 </head>
 <body>
-    <form class="form-horizontal form-style" method="POST" action="/register/events" enctype="multipart/form-data">
+    <form class="form-horizontal form-style" method="POST" action="/backend/events/register" enctype="multipart/form-data">
     @csrf
     {{csrf_field() }}
         <div class="col-md-12 st-con-title">
@@ -47,8 +47,8 @@
 
 
     <div class="bottuns" align="center">
-        <button id="Cadastrar" class="btn btn-success" onclick="send()" type="Submit">Adicionar</button>
-        <button id="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
+        <button class="btn btn-success" onclick="send()" type="Submit">Adicionar</button>
+        <button class="btn btn-danger" type="Reset">Cancelar</button>
     </div>
     </form>
 </body>

@@ -21,51 +21,80 @@ class CategoriesController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-
-    public function show($id)
-    {
-        $categories = categories::where("uuid", $uuid)->get()->first();
-        return view('backend.categories.show', ['categories' => $categories]);
-    }
-
     public function create()
     {
         return view('backend.categories.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
         $messages = array(
-            'title.required' => 'É obrigatório um nome para a categoria',
+            'nameCategory.required' => 'É obrigatório um nome para a categoria',
         );
         //vetor com as especificações de validações
         $regras = array(
-            'title' => 'required|string',
+            'nameCategory' => 'required|string',
+            'type' => 'string',
         );
         //cria o objeto com as regras de validação
         $validador = Validator::make($request->all(), $regras, $messages);
         //executa as validações
         if ($validador->fails()) {
-            return redirect('register/category')
+            return redirect('/backend/categories/create')
             ->withErrors($validador)
             ->withInput($request->all);
         }
         //se passou pelas validações, processa e salva no banco...
-        $obj_Categories = new news();
-        $obj_Categories->title = $request['title'];
+        $obj_Categories = categories::create($request->all());
+        return redirect('/backend')->with('success', 'Categoria criada com sucesso!!');
+    }
+
+    public function edit($uuid)
+    {
+        $obj_Categories = categories::find($uuid);
+
+        return view('backend.categories.edit', ['categories' => $obj_Categories]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\atendimento  $atividade
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request,  $uuid)
+    {
+
+        // dados
+        $messages = array(
+            'nameCategory.required' => 'É obrigatório um nome para a categoria',
+        );
+        //vetor com as especificações de validações
+        $regras = array(
+            'nameCategory' => 'required|string',
+            'type' => 'string',
+        );
+
+        //cria o objeto com as regras de validação
+        $validador = Validator::make($request->all(), $regras, $messages);
+        //executa as validações
+        if ($validador->fails()) {
+            return redirect('backend/categories/create')
+            ->withErrors($validador)
+            ->withInput($request->all);
+        }
+
+        $obj_Categories = categories::findOrFail($uuid);
+        $obj_Categories->nameCategory = $request['nameCategory'];
         $obj_Categories->type = $request['type'];
         $obj_Categories->save();
-        return redirect('/backend')->with('success', 'Categoria criada com sucesso!!');
+
+        return redirect('/backend')->with('success', 'Categori atualizada com sucesso!!');
     }
 
     public function delete($uuid)
     {
-
         $obj_Categories = categories::find($uuid);
         return view('backend.categories.delete', ['categories' => $obj_Categories]);
     }

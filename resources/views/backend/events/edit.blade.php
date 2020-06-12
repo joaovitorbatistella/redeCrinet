@@ -23,22 +23,36 @@
 
     <!-- Styles -->
 
-    <title>Deletar notícia?</title>
+    <title>Editar Eventos</title>
+
 </head>
 <body>
-
-       <form class="form-style" action="/backend/news/delete/{{$news->uuid}}" method="post">
-       <div class="col-md-12">
-            <h1 class="form-title">Formulário de Exclusão de Notícias</h1>
-       </div>
-       {{ csrf_field() }}
-        {{ method_field('DELETE') }}
-        <p class="p-delete">Deseja mesmo excluir <strong>{{$news->title}}</strong> ?</p>
-
-        <div class="col-md-12" align="center">
-            <button class="btn btn-danger" type="submit">Deletar</button>
-            <a class="btn btn-index" href="/backend">Início</a>
+    <form class="form-horizontal form-style" method="POST" action="/backend/events/update/{{$events->uuid}}" enctype="multipart/form-data">
+    @csrf
+    {{ method_field('PUT') }}
+    {{csrf_field() }}
+        <div class="col-md-12 st-con-title">
+            <h1 class="form-title">Editar evento</h1>
         </div>
+    <label class="col-md-12">Título: <h11>*</h11></label>
+        <div class="st-con-input">
+        <input value="{{$events->title}}" type="text" required="required" name="title" class="st-input form-control">
+    </div>
+    <label class="col-md-12">Descrição: <h11>*</h11></label>
+        <div class="st-con-input">
+        <input value="{{$events->description}}" type="text" required="required" name="description" class="st-input form-control">
+    </div>
+    <label class="col-md-12">Data: <h11>*</h11></label>
+    <label class="col-md-12"><p style="font-size:15px">{{$events->scheduledto}}</p></label>
+    <div class="st-con-input">
+        <input type="datetime-local" required="required" name="scheduledto" class="st-input form-control">
+    </div>
+
+
+    <div class="bottuns" align="center">
+        <button class="btn btn-success" onclick="send()" type="Submit">Atualizar</button>
+        <button class="btn btn-danger" type="Reset">Cancelar</button>
+    </div>
     </form>
 </body>
 </html>

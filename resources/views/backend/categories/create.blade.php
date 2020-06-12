@@ -43,7 +43,7 @@
     </script>
 </head>
 <body>
-    <form class="form-horizontal form-style" method="POST" action="/register/categories" enctype="multipart/form-data">
+    <form class="form-horizontal form-style" method="POST" action="/backend/categories/register" enctype="multipart/form-data">
     @csrf
     {{csrf_field() }}
         <div class="col-md-12 st-con-title">
@@ -51,16 +51,16 @@
         </div>
     <label class="col-md-12">Nome: <h11>*</h11></label>
         <div class="st-con-input">
-            <input type="text" required="required" name="name" class="st-input form-control">
+            <input type="text" required="required" name="nameCategory" class="st-input form-control">
         </div>
-    <label class="col-md-12">Tipo (nome em inglês): <h11>*</h11></label>
+    <label class="col-md-12">Tipo (nome em inglês):</label>
         <div class="st-con-input">
-        <input type="text" required="required" name="type" class="st-input form-control">
+        <input type="text" name="type" class="st-input form-control">
         </div>
 
     <div class="bottuns" align="center">
-        <button id="Cadastrar" class="btn btn-success" onclick="send()" type="Submit">Adicionar</button>
-        <button id="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
+        <button class="btn btn-success" onclick="send()" type="Submit">Adicionar</button>
+        <button class="btn btn-danger" type="Reset">Cancelar</button>
     </div>
     </form>
 </body>

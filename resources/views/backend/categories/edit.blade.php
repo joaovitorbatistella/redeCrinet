@@ -23,22 +23,31 @@
 
     <!-- Styles -->
 
-    <title>Deletar notícia?</title>
+    <title>Editar Categoria</title>
+
 </head>
 <body>
-
-       <form class="form-style" action="/backend/news/delete/{{$news->uuid}}" method="post">
-       <div class="col-md-12">
-            <h1 class="form-title">Formulário de Exclusão de Notícias</h1>
-       </div>
-       {{ csrf_field() }}
-        {{ method_field('DELETE') }}
-        <p class="p-delete">Deseja mesmo excluir <strong>{{$news->title}}</strong> ?</p>
-
-        <div class="col-md-12" align="center">
-            <button class="btn btn-danger" type="submit">Deletar</button>
-            <a class="btn btn-index" href="/backend">Início</a>
+    <form class="form-horizontal form-style" method="POST" action="/backend/categories/update/{{$categories->uuid}}" enctype="multipart/form-data">
+    @csrf
+    {{ method_field('PUT') }}
+    {{csrf_field() }}
+    <div class="col-md-12 st-con-title">
+            <h2 class="form-title">Editar categoria</h2>
         </div>
+    <label class="col-md-12">Nome: <h11>*</h11></label>
+        <div class="st-con-input">
+            <input value="{{$categories->nameCategory}}" type="text" required="required" name="nameCategory" class="st-input form-control">
+        </div>
+    <label class="col-md-12">Tipo (nome em inglês):</label>
+        <div class="st-con-input">
+        <input value="{{$categories->type}}" type="text" name="type" class="st-input form-control">
+        </div>
+
+
+    <div class="bottuns" align="center">
+        <button class="btn btn-success" onclick="send()" type="Submit">Atualizar</button>
+        <button class="btn btn-danger" type="Reset">Cancelar</button>
+    </div>
     </form>
 </body>
 </html>

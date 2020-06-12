@@ -23,17 +23,17 @@
 
     <!-- Styles -->
 
-    <title>Deletar notícia?</title>
+    <title>Deletar categoria?</title>
 </head>
 <body>
 
-       <form class="form-style" action="/backend/news/delete/{{$news->uuid}}" method="post">
+       <form class="form-style" action="/backend/categories/delete/{{$categories->uuid}}" method="post">
        <div class="col-md-12">
-            <h1 class="form-title">Formulário de Exclusão de Notícias</h1>
+            <h1 class="form-title">Formulário de Exclusão de Categorias</h1>
        </div>
        {{ csrf_field() }}
         {{ method_field('DELETE') }}
-        <p class="p-delete">Deseja mesmo excluir <strong>{{$news->title}}</strong> ?</p>
+        <p class="p-delete">Deseja mesmo excluir <strong>{{$categories->nameCategory}}</strong> ?</p>
 
         <div class="col-md-12" align="center">
             <button class="btn btn-danger" type="submit">Deletar</button>

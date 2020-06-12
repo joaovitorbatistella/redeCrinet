@@ -39,7 +39,7 @@
                 <p class="p-show"><strong>Corpo:</strong> {{$result->body}}</p>
                 <p class="p-show"><strong>Autor:</strong> {{$result->author}}</p>
                 <p class="p-show"><strong>Fonte:</strong> {{$result->source}}</p>
-                <p class="p-show"><strong>Categoria:</strong> {{$result->updated_at}}</p>
+                <p class="p-show"><strong>Categoria:</strong> {{$result->nameCategory}}</p>
                 <p class="p-show"><strong>Atualizada em:</strong> {{$result->updated_at}}</p>
                 <p class="p-show"><strong>Criada em:</strong> {{$result->created_at}}</p>
             </div>
