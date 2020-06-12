@@ -89,7 +89,7 @@
         <tbody>
         @foreach ($events as $evt)
             <tr>
-                <td><a class="btn btn-details" href="/backend/event/show/{{$evt->uuid}}">Detealhes</a></td>
+                <td><a disabled class="btn btn-details">Detealhes</a></td>
                 <td>{{$evt->title}}</td>
                 <td>{{$evt->description}}</td>
                 <td>{{ date('d/m/Y', strtotime($evt->scheduledto)) }} às {{ date('H:i', strtotime($evt->scheduledto)) }}</td>
@@ -121,7 +121,7 @@
         <tbody>
         @foreach ($categories as $cat)
             <tr>
-                <td><a class="btn btn-details" href="/backend/categories/show/{{$cat->uuid}}">Detalhes</a></td>
+                <td><a disabled class="btn btn-details">Detalhes</a></td>
                 <td>{{$cat->nameCategory}}</td>
                 <td>{{$cat->type}}</td>
                 <td>{{ date('d/m/Y', strtotime($cat->updated_at)) }} às {{ date('H:i', strtotime($cat->updated_at)) }}</td>
