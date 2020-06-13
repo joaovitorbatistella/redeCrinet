@@ -41,17 +41,25 @@ class CategoriesController extends Controller
         //executa as validações
         if ($validador->fails()) {
             return redirect('/backend/categories/create')
-            ->withErrors($validador)
+            ->withErrors(['categoriesStoreValidadorMessage'=>'Os dados inseridos não sarisfazem os requisitos de validação para o cadastro de uma categoria'])
             ->withInput($request->all);
         }
         //se passou pelas validações, processa e salva no banco...
-        $obj_Categories = categories::create($request->all());
-        return redirect('/backend')->with('success', 'Categoria criada com sucesso!!');
+        try {
+            $obj_Categories = categories::create($request->all());
+        } catch (\Exception $e){
+            return redirect()->to('/backend')->withErrors(['categoriesStoreFailedMessage'=>'Não foi possível cadastrar esta categoria, erro: '. $e]);
+        }
+        return redirect('/backend')->withSuccess('Categoria criada com sucesso!!');
     }
 
     public function edit($uuid)
     {
         $obj_Categories = categories::find($uuid);
+
+        if (!$obj_Categories) {
+            return redirect()->to('/backend')->withErrors(['categoriesUuidEditNotFoundMessage'=>'Não foi encontrado a categoria com o ID informado']);
+        }
 
         return view('backend.categories.edit', ['categories' => $obj_Categories]);
     }
@@ -81,7 +89,7 @@ class CategoriesController extends Controller
         //executa as validações
         if ($validador->fails()) {
             return redirect('backend/categories/create')
-            ->withErrors($validador)
+            ->withErrors(['categoriesUpdateValidadorMessage'=>'Os dados inseridos não sarisfazem os requisitos de validação para atualização de categoria'])
             ->withInput($request->all);
         }
 
@@ -90,12 +98,17 @@ class CategoriesController extends Controller
         $obj_Categories->type = $request['type'];
         $obj_Categories->save();
 
-        return redirect('/backend')->with('success', 'Categori atualizada com sucesso!!');
+        return redirect('/backend')->withSuccess('Categoria atualizada com sucesso!!');
     }
 
     public function delete($uuid)
     {
         $obj_Categories = categories::find($uuid);
+
+        if(!$obj_Categories) {
+            return redirect()->to('/backend')->withErrors(['categoiresDeleteUuidNotFoundMessage'=>'Não foi encontrado a categoria com o ID informado']);
+        }
+
         return view('backend.categories.delete', ['categories' => $obj_Categories]);
     }
 
@@ -103,8 +116,17 @@ class CategoriesController extends Controller
     {
         $obj_Categories = categories::findOrFail($uuid);
 
-        $obj_Categories->delete($uuid);
+        if(!$obj_Categories) {
+            return redirect()->to('/backend')->withErrors(['categoriesDeleteUuidNotFoundMessage'=>'Não foi encontrado a categoria com o ID informado']);
+        }
 
-        return Redirect('/backend')->with('sucess', 'Categoria excluída com Sucesso!');
+        try {
+            $obj_Categories->delete($uuid);
+
+        } catch (\Exception $e){
+            return redirect()->to('/backend')->withErrors(['categoriesDestroyFailedMessage'=>'Não foi possível deletar esta categoria, erro: '. $e]);
+        }
+
+        return Redirect('/backend')->withSuccess('Categoria excluída com Sucesso!');
     }
 }

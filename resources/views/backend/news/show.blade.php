@@ -35,6 +35,8 @@
         </div>
         <div class="row">
             <div class="col-md-6">
+
+
                 <p class="p-show"><strong>Título:</strong> {{$result->title}}</p>
                 <p class="p-show"><strong>Corpo:</strong> {{$result->body}}</p>
                 <p class="p-show"><strong>Autor:</strong> {{$result->author}}</p>

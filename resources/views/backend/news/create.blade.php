@@ -24,23 +24,7 @@
     <!-- Styles -->
 
     <title>Adicionar Notícias</title>
-    <script>
 
-        function myFunction() {
-            var x = document.getElementById("hidenDiv");
-            var y = document.getElementById("categories");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-                document.getElementById("categories").required = false;
-
-            } else {
-                x.style.display = "none";
-                document.getElementById("categories").required = true;
-            }
-        }
-
-
-    </script>
 </head>
 <body>
     <form class="form-horizontal form-style" method="POST" action="/backend/news/register" enctype="multipart/form-data">
@@ -117,6 +101,24 @@
         <button class="btn btn-danger" type="Reset">Cancelar</button>
     </div>
     </form>
+
+    <script>
+
+        function myFunction() {
+            var x = document.getElementById("hidenDiv");
+            var y = document.getElementById("categories");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                document.getElementById("categories").required = false;
+
+            } else {
+                x.style.display = "none";
+                document.getElementById("categories").required = true;
+            }
+        }
+
+
+    </script>
 </body>
 </html>
 

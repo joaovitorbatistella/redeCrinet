@@ -38,12 +38,21 @@ class NewsController extends Controller
         ->get();
         $result = $firstResult->firstWhere('uuid', $uuid);
 
+        if(!$result) {
+            return redirect()->to('/backend')->withErrors(['newsUuidShowNotFoundMessage'=>'Não foi encontrado a notícia com o ID informado']);
+        }
+
         return view('backend.news.show', compact('result'));
     }
 
     public function create()
     {
         $categoryList = categories::all();
+
+        if(!$categoryList) {
+            return redirect()->to('/backend')->withErrors(['newsCategoryListNotFoundMessage'=>'Não foi encontrado a notícia com o ID informado']);
+        }
+
         return view('backend.news.create', ['categories' => $categoryList]);
     }
 
@@ -72,7 +81,7 @@ class NewsController extends Controller
 
         if ($validador->fails()) {
             return redirect('backend/news/create')
-            ->withErrors($validador)
+            ->withErrors(['newsStoreValidadorMessage'=>'Os dados informados não satisfazem os requisitos de validação para o cadastro da notícia'])
             ->withInput($request->all);
         }
 
@@ -93,15 +102,22 @@ class NewsController extends Controller
                 $obj_News = News::findOrFail($news->uuid);
                 $obj_News->category_id = $category->uuid;
                 $obj_News->image = '/storage/'.$path;
-                $obj_News->save();
-
+                try {
+                    $obj_News->save();
+                } catch (\Exception $e){
+                    return redirect()->to('/backend')->withErrors(['newsStoreFailedMessage'=>'Não foi possível alterar esta notícia, erro: '. $e]);
+                }
              } else {
                 $news = News::create($request->except('image', 'category_id'));
                 $category = categories::create($request->all());
 
                 $obj_News = News::findOrFail($news->uuid);
                 $obj_News->category_id = $category->uuid;
-                $obj_News->save();
+                try {
+                    $obj_News->save();
+                } catch (\Exception $e){
+                    return redirect()->to('/backend')->withErrors(['newsStoreFailedMessage'=>'Não foi possível alterar esta notícia, erro: '. $e]);
+                }
              }
 
         } else {
@@ -119,13 +135,21 @@ class NewsController extends Controller
                 $obj_News = News::findOrFail($news->uuid);
                 $obj_News->image = '/storage/'.$path;
                 $obj_News->category_id = $request['category_id'];
-                $obj_News->save();
+                try {
+                    $obj_News->save();
+                } catch (\Exception $e){
+                    return redirect()->to('/backend')->withErrors(['newsStoreFailedMessage'=>'Não foi possível alterar esta notícia, erro: '. $e]);
+                }
              } else {
                 $news = News::create($request->except('image', 'category_id'));
 
                 $obj_News = News::findOrFail($news->uuid);
                 $obj_News->category_id = $request['category_id'];
-                $obj_News->save();
+                try {
+                    $obj_News->save();
+                } catch (\Exception $e){
+                    return redirect()->to('/backend')->withErrors(['newsStoreFailedMessage'=>'Não foi possível alterar esta notícia, erro: '. $e]);
+                }
             }
 
         }
@@ -139,6 +163,10 @@ class NewsController extends Controller
         ->get();
         $newsOnce = $news->firstWhere('uuid', $uuid);
         $obj_Categories = categories::all();
+
+        if (!$newsOnce) {
+            return redirect()->to('/backend')->withErrors(['newsUuidEditNotFoundMessage'=>'Não foi encontrado a notícia com o ID informado']);
+        }
 
 
         return view('backend.news.edit', ['news' => $newsOnce, 'categories' => $obj_Categories]);
@@ -177,7 +205,7 @@ class NewsController extends Controller
         //executa as validações
         if ($validador->fails()) {
             return redirect('backend/news/create')
-            ->withErrors($validador)
+            ->withErrors(['newsUpdateValidadorMessage'=>'Os dados inseridos não sarisfazem os requisitos de validação para atualização de notícia'])
             ->withInput($request->all);
         }
 
@@ -201,7 +229,11 @@ class NewsController extends Controller
                 $obj_News->source = $$request['source'];
                 $obj_News->category_id = $category->uuid;
                 $obj_News->image = '/storage/'.$path;
-                $obj_News->save();
+                try {
+                    $obj_News->save();
+                } catch (\Exception $e){
+                    return redirect()->to('/backend')->withErrors(['newsStoreFailedMessage'=>'Não foi possível cadastrar esta notícia, erro: '. $e]);
+                }
 
              } else {
                 $category = categories::create($request->all());
@@ -212,7 +244,11 @@ class NewsController extends Controller
                 $obj_News->author = $$request['author'];
                 $obj_News->source = $$request['source'];
                 $obj_News->category_id = $category->uuid;
-                $obj_News->save();
+                try {
+                    $obj_News->save();
+                } catch (\Exception $e){
+                    return redirect()->to('/backend')->withErrors(['newsStoreFailedMessage'=>'Não foi possível cadastrar esta notícia, erro: '. $e]);
+                }
              }
 
         } else {
@@ -232,7 +268,11 @@ class NewsController extends Controller
                 $obj_News->source = $request['source'];
                 $obj_News->image = '/storage/'.$path;
                 $obj_News->category_id = $request['category_id'];
-                $obj_News->save();
+                try {
+                    $obj_News->save();
+                } catch (\Exception $e){
+                    return redirect()->to('/backend')->withErrors(['newsStoreFailedMessage'=>'Não foi possível cadastrar esta notícia, erro: '. $e]);
+                }
              } else {
                 $obj_News = News::findOrFail($uuid);
                 $obj_News->title = $request['title'];
@@ -240,18 +280,25 @@ class NewsController extends Controller
                 $obj_News->author = $request['author'];
                 $obj_News->source = $request['source'];
                 $obj_News->category_id = $request['category_id'];
-                $obj_News->save();
+                try {
+                    $obj_News->save();
+                } catch (\Exception $e){
+                    return redirect()->to('/backend')->withErrors(['newsStoreFailedMessage'=>'Não foi possível cadastrar esta notícia, erro: '. $e]);
+                }
              }
-
         }
 
-        return redirect('/backend')->with('success', 'Atendimento atualizada com sucesso!!');
+        return redirect('/backend')->withSuccess('Atendimento atualizado com sucesso!!');
     }
 
     public function delete($uuid)
     {
-
         $obj_News = News::find($uuid);
+
+        if(!$obj_News) {
+            return redirect()->to('/backend')->withErrors(['newsDeleteUuidNotFoundMessage'=>'Não foi encontrado a notícia com o ID informado']);
+        }
+
         return view('backend.news.delete', ['news' => $obj_News]);
     }
 
@@ -259,12 +306,18 @@ class NewsController extends Controller
     {
         $obj_News = News::findOrFail($uuid);
 
-        $obj_News->delete($uuid);
+        if(!$obj_News) {
+            return redirect()->to('/backend')->withErrors(['newsDeleteUuidNotFoundMessage'=>'Não foi encontrado a notícia com o ID informado']);
+        }
 
-        $image_path = public_path("/storage/images/news/{$uuid}");
+        try {
+            $obj_News->delete($uuid);
+            $image_path = public_path("/storage/images/news/{$uuid}");
+            File::deleteDirectory($image_path);
+        } catch (\Exception $e){
+            return redirect()->to('/backend')->withErrors(['newsDestroyFailedMessage'=>'Não foi possível deletar esta notícia, erro: '. $e]);
+        }
 
-        File::deleteDirectory($image_path);
-
-        return Redirect('/backend')->with('sucess', 'Notícia excluída com Sucesso!');
+        return Redirect('/backend')->withSuccess('Notícia excluída com Sucesso!');
     }
 }

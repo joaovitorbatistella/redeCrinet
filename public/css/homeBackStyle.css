@@ -263,3 +263,13 @@ label {
     color: #692020;
     background-color: ivory;
 }
+
+
+/*ERRORS*/
+
+#alert {
+    position: absolute;
+    width: 360px;
+    margin: 80px 30px 30px 30px;
+    margin-left: 75%;
+}

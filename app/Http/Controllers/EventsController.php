@@ -45,17 +45,25 @@ class EventsController extends Controller
         //executa as validações
         if ($validador->fails()) {
             return redirect('/backend/event/create')
-            ->withErrors($validador)
+            ->withErrors(['eventsStoreValidadorMessage'=>'Os dados informados não satisfazem os requisitos de validação para o cadastro do evento'])
             ->withInput($request->all);
         }
         //se passou pelas validações, processa e salva no banco...
-        $obj_Events = Events::create($request->all());
+        try {
+            $obj_Events = Events::create($request->all());
+        } catch (\Exception $e){
+            return redirect()->to('/backend')->withErrors(['eventsStoreFailedMessage'=>'Não foi possível cadastrar este evento, erro: '. $e]);
+        }
         return redirect('/backend')->with('success', 'Evento criado com sucesso!!');
     }
 
     public function edit($uuid)
     {
         $obj_Events = Events::find($uuid);
+
+        if (!$obj_Events) {
+            return redirect()->to('/backend')->withErrors(['eventsUuidEditNotFoundMessage'=>'Não foi encontrado o evento com o ID informado']);
+        }
 
         return view('backend.events.edit', ['events' => $obj_Events]);
     }
@@ -89,7 +97,7 @@ class EventsController extends Controller
         //executa as validações
         if ($validador->fails()) {
             return redirect('backend/events/create')
-            ->withErrors($validador)
+            ->withErrors(['eventsStoreValidadorMessage'=>'Os dados informados não satisfazem os requisitos de validação para a atualização do evento'])
             ->withInput($request->all);
         }
 
@@ -97,14 +105,23 @@ class EventsController extends Controller
         $obj_Events->title = $request['title'];
         $obj_Events->description = $request['description'];
         $obj_Events->scheduledto = $request['scheduledto'];
-        $obj_Events->save();
+        try {
+            $obj_Events->save();
+        } catch (\Exception $e){
+            return redirect()->to('/backend')->withErrors(['eventsStoreFailedMessage'=>'Não foi possível alterar este evento, erro: '. $e]);
+        }
 
-        return redirect('/backend')->with('success', 'Atendimento atualizada com sucesso!!');
+        return redirect('/backend')->withSuccess('Atendimento atualizada com sucesso!!');
     }
 
     public function delete($uuid)
     {
         $obj_Events = Events::find($uuid);
+
+        if(!$obj_Events) {
+            return redirect()->to('/backend')->withErrors(['eventsDeleteUuidNotFoundMessage'=>'Não foi encontrado o evento com o ID informado']);
+        }
+
         return view('backend.events.delete', ['events' => $obj_Events]);
     }
 
@@ -112,8 +129,16 @@ class EventsController extends Controller
     {
         $obj_Events = Events::findOrFail($uuid);
 
-        $obj_Events->delete($uuid);
+        if(!$obj_Events) {
+            return redirect()->to('/backend')->withErrors(['eventsDeleteUuidNotFoundMessage'=>'Não foi encontrado o evento com o ID informado']);
+        }
 
-        return Redirect('/backend')->with('sucess', 'Evento excluída com Sucesso!');
+        try {
+            $obj_Events->delete($uuid);
+        } catch (\Exception $e){
+            return redirect()->to('/backend')->withErrors(['eventsDestroyFailedMessage'=>'Não foi possível deletar este evento, erro: '. $e]);
+        }
+
+        return Redirect('/backend')->withSuccess('Evento excluída com Sucesso!');
     }
 }
