@@ -22,6 +22,7 @@ Auth::routes();
 
 // BACKEND
 Route::group(['middleware' => 'auth'], function(){
+    Route::post('logout', 'Auth\LoginController@logout')->name('logout');
     Route::get('/backend', 'HomeBackendController@index')->name('home');
 
         // NEWS

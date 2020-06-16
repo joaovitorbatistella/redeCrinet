@@ -34,7 +34,7 @@
         <div class="st-con-input">
         <input type="text" required="required" name="title" class="st-input form-control">
     </div>
-    <label class="col-md-12">Corpo: <h11>*</h11></label>
+    <label class="col-md-12">Breve descrição: <h11>*</h11></label>
         <div class="st-con-input">
         <input type="text" required="required" name="description" class="st-input form-control">
     </div>
@@ -53,5 +53,3 @@
     </form>
 </body>
 </html>
-
-

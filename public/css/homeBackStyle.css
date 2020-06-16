@@ -6,6 +6,7 @@ body {
 
 .nav-bar {
     margin: 20px 0 80px 0;
+    float: left;
 }
 
 .row-news {
@@ -32,6 +33,26 @@ a, th, td, h1 {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+
+.logout-btn{
+    color: white;
+    border-color: ivory;
+    margin: 0 20px 20px 20px;
+    float: right;
+
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.logout-btn:hover{
+    color: #692020;
+    background-color: ivory;
+}
+
+
+.fa-sign-out {
+    margin-left: 8px;
 }
 
 .add-news-btn{

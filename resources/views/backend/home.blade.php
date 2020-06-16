@@ -282,6 +282,13 @@
     <div class="row">
         <div class="col-md-12 nav-bar">
             <h1 style="text-align: center">Gerenciador de conteúdo <strong>Rede Crinet</strong></h1>
+            <a href="{{ route('logout') }}" class="btn logout-btn" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                Sair
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+            </a>
+            <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
         </div>
     </div>
         <div class="row row-news">
@@ -326,7 +333,7 @@
             </div>
         </div>
             <div class="col-md-3 col-img-logo">
-                <img width="90%" src="{{asset('images/logo.png')}}" />
+                <img width="100%" src="{{asset('images/white_logo.png')}}" />
             </div>
         </div>
         <div class="row row-event-categories">

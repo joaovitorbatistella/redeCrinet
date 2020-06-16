@@ -319,14 +319,16 @@
                             data: {title: religionVar},
                             dataType: 'json',
                             success: function(response) {
-                                $.each(response, function(index, item) {
-                                    const {title, body, author, source, image, updated_at, created_at} = item;
+                                if(response.length === 0){
+                                    alert('Não há notícias dessa categoria para lhe mostrar no momento!');
+                                } else {
+                                    $.each(response, function(index, item) {
+                                        const {title, body, author, source, image, updated_at, created_at} = item;
 
-                                    console.log(item);
+                                        $("#divReligion").append('<div class="news-flag col-md-12"><h1 class="religion-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="religion-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="religion-news  body-news retreat">'+body+'</p><p class="religion-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img src="'+image+'" /></div></div>');
 
-                                    $("#divReligion").append('<div class="news-flag col-md-12"><h1 class="religion-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="religion-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="religion-news  body-news retreat">'+body+'</p><p class="religion-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img src="'+image+'" /></div></div>');
-
-                                });
+                                    });
+                                }
                             }
                         });
 
@@ -374,14 +376,16 @@
                             data: {title: cultureVar},
                             dataType: 'json',
                             success: function(response) {
-                                $.each(response, function(index, item) {
-                                    const {title, body, author, source, image, updated_at, created_at} = item;
+                                if(response.length === 0){
+                                    alert('Não há notícias dessa categoria para lhe mostrar no momento!');
+                                } else {
+                                    $.each(response, function(index, item) {
+                                        const {title, body, author, source, image, updated_at, created_at} = item;
 
-                                    console.log(item);
+                                        $("#divCulture").append('<div class="news-flag col-md-12"><h1 class="culture-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="culture-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="culture-news  body-news retreat">'+body+'</p><p class="culture-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img src="'+image+'" /></div></div>');
 
-                                    $("#divCulture").append('<div class="news-flag col-md-12"><h1 class="culture-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="culture-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="culture-news  body-news retreat">'+body+'</p><p class="culture-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img src="'+image+'" /></div></div>');
-
-                                });
+                                    });
+                                }
                             }
                         });
 
@@ -429,14 +433,16 @@
                             data: {title: societyVar},
                             dataType: 'json',
                             success: function(response) {
-                                $.each(response, function(index, item) {
-                                    const {title, body, author, source, image, updated_at, created_at} = item;
+                                if(response.length === 0){
+                                    alert('Não há notícias dessa categoria para lhe mostrar no momento!');
+                                } else {
+                                    $.each(response, function(index, item) {
+                                        const {title, body, author, source, image, updated_at, created_at} = item;
 
-                                    console.log(item);
+                                        $("#divSociety").append('<div class="news-flag col-md-12"><h1 class="society-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="society-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="society-news  body-news retreat">'+body+'</p><p class="society-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img src="'+image+'" /></div></div>');
 
-                                    $("#divSociety").append('<div class="news-flag col-md-12"><h1 class="society-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="society-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="society-news  body-news retreat">'+body+'</p><p class="society-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img src="'+image+'" /></div></div>');
-
-                                });
+                                    });
+                                }
                             }
                         });
 
@@ -484,14 +490,16 @@
                             data: {title: recreationVar},
                             dataType: 'json',
                             success: function(response) {
-                                $.each(response, function(index, item) {
+                                if(response.length === 0){
+                                    alert('Não há notícias dessa categoria para lhe mostrar no momento!');
+                                } else {
+                                    $.each(response, function(index, item) {
                                     const {title, body, author, source, image, updated_at, created_at} = item;
-
-                                    console.log(item);
 
                                     $("#divRecreation").append('<div class="news-flag col-md-12"><h1 class="recreation-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="recreation-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="recreation-news  body-news retreat">'+body+'</p><p class="recreation-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img src="'+image+'" /></div></div>');
 
                                 });
+                                }
                             }
                         });
 
@@ -539,14 +547,17 @@
                             data: {title: worldVar},
                             dataType: 'json',
                             success: function(response) {
-                                $.each(response, function(index, item) {
-                                    const {title, body, author, source, image, updated_at, created_at} = item;
 
-                                    console.log(item);
+                                if(response.length === 0){
+                                    alert('Não há notícias dessa categoria para lhe mostrar no momento!');
+                                } else {
+                                    $.each(response, function(index, item) {
+                                        const {title, body, author, source, image, updated_at, created_at} = item;
 
-                                    $("#divWorld").append('<div class="news-flag col-md-12"><h1 class="World-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="World-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="World-news  body-news retreat">'+body+'</p><p class="World-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img src="'+image+'" /></div></div>');
+                                        $("#divWorld").append('<div class="news-flag col-md-12"><h1 class="World-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="World-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="World-news  body-news retreat">'+body+'</p><p class="World-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img src="'+image+'" /></div></div>');
 
-                                });
+                                    });
+                                }
                             }
                         });
 
@@ -594,14 +605,16 @@
                             data: {title: lastNewsVar},
                             dataType: 'json',
                             success: function(response) {
-                                $.each(response, function(index, item) {
-                                    const {title, body, author, source, image, updated_at, created_at} = item;
+                                if(response.length === 0){
+                                    alert('Não há notícias dessa categoria para lhe mostrar no momento!');
+                                } else {
+                                    $.each(response, function(index, item) {
+                                        const {title, body, author, source, image, updated_at, created_at} = item;
 
-                                    console.log(item);
+                                        $("#divLastNews").append('<div class="news-flag col-md-12"><h1 class="lastNews-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="lastNews-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="lastNews-news  body-news retreat">'+body+'</p><p class="lastNews-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img src="'+image+'" /></div></div>');
 
-                                    $("#divLastNews").append('<div class="news-flag col-md-12"><h1 class="lastNews-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="lastNews-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="lastNews-news  body-news retreat">'+body+'</p><p class="lastNews-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img src="'+image+'" /></div></div>');
-
-                                });
+                                    });
+                                }
                             }
                         });
 
