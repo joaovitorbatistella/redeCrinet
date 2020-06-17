@@ -20,7 +20,7 @@ class HomeController extends Controller
     {
         $eventsList = Events::all();
 
-        return view('layouts.front', ['events' => $eventsList]);
+        return view('frontend.home', ['events' => $eventsList]);
     }
 
     public function ajax(Request $request)

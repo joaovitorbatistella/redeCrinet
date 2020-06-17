@@ -374,7 +374,6 @@ footer a img {
     font-weight: bold;
     background-color: rgba(167, 231, 204, 0.1);
     border-radius: 30px;
-
 }
 
 .body-news{
@@ -583,3 +582,49 @@ footer a img {
   ::-webkit-scrollbar-thumb:hover {
     background: rgb(28, 83, 47);
   }
+
+
+  /*LOGIN*/
+.text-md-right {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    font-size: 15px;
+}
+
+.text-remember {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    font-size: 14px;
+}
+
+.title-auth{
+    font-size: 40px;
+    font-family: 'Roboto', sans-serif;
+    color: #e4f2ed;
+    margin-bottom: 30px;
+}
+
+.btn-send {
+    background-color: transparent;
+    color: white;
+    border-color: ivory;
+    margin-top: 20px;
+    float: right;
+
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.btn-send:hover{
+    color: #0F1811;
+    background-color: ivory;
+}
+
+.btn-forgot {
+    text-decoration: none;
+    color: #88fcd8;
+}
+
+.btn-forgot:hover {
+    color: #529b84;
+}
