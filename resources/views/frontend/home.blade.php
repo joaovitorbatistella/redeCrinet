@@ -30,7 +30,7 @@
                 <div class="col-md-6 col-two-first-block">
                     <div class="row">
                         <div class="col-md-12 player-frame">
-                        <iframe width="1280" height="720" src="https://www.youtube.com/embed/EEIk7gwjgIM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe src="{{$live->src}}" width="1280" height="720" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
                         </div>
                     </div>
                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Events;
 use App\categories;
+use App\Live;
 use App\News;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\MessageBag;
@@ -19,8 +20,9 @@ class HomeController extends Controller
     public function index()
     {
         $eventsList = Events::all();
+        $live = Live::all()->first();
 
-        return view('frontend.home', ['events' => $eventsList]);
+        return view('frontend.home', ['events' => $eventsList, 'live' => $live]);
     }
 
     public function ajax(Request $request)

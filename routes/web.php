@@ -59,6 +59,9 @@ Route::group(['middleware' => 'auth'], function(){
         Route::put('/categories/update/{uuid}', 'CategoriesController@update');
         Route::get('/categories/delete/{uuid}', 'CategoriesController@delete');
         Route::delete('/categories/delete/{uuid}', 'CategoriesController@destroy');
+
+        // LIVE
+        Route::post('/live/register', 'LiveController@store');
     });
 
 });

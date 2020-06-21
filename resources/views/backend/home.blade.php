@@ -265,6 +265,32 @@
         </div>
     </div>
 @enderror
+
+@error('liveStoreValidadorMessage')
+    <div id="alert" style="display:block" class="alert alert-danger">
+        <div class="row">
+            <div class="col-md-10">
+                <p>{{ $message }}</p>
+            </div>
+            <div class="col-md-2">
+             <a class="btn" onclick="handleToastsBtn()"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+@enderror
+@error('liveStoreFailedMessage')
+    <div id="alert" style="display:block" class="alert alert-danger">
+        <div class="row">
+            <div class="col-md-10">
+                <p>{{ $message }}</p>
+            </div>
+            <div class="col-md-2">
+             <a class="btn" onclick="handleToastsBtn()"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+@enderror
+
 @if(session('success'))
 <div id="alert" style="display:block" class="alert alert-success">
         <div class="row">
@@ -404,6 +430,30 @@
         </div>
     </div>
 
+    <div align="center" class="row live-row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-10">
+            <h1 style="text-align: center">Ao-Vivo</h1>
+            <div class="live-config">
+            <form class="form-horizontal form-style" id="form" method="POST" action="/backend/live/register" enctype="multipart/form-data">
+                @csrf
+                {{csrf_field() }}
+                <label class="col-md-12">Código de implementação: <h11>*</h11></label>
+                <div class="st-con-input">
+                    <input type="text" required="required" name="implementationCode" style="color: #f4ede8" class="st-input live-input form-control">
+                </div>
+
+                <div class="bottuns" align="center">
+                <button class="btn btn-success" onclick="load()" type="Submit">Atualizar</button>
+                <button class="btn btn-danger" type="Reset">Cancelar</button>
+                </div>
+            </form>
+            </div>
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
 
     <footer>
             <div class="footer-div">

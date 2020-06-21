@@ -285,6 +285,22 @@ label {
     background-color: ivory;
 }
 
+/*LIVE*/
+.live-config {
+    width: 700px;
+}
+
+.st-con-input {
+    background-color: #414141;
+}
+
+.live-input {
+    color: #f4ede8;
+}
+
+.live-row {
+    margin-bottom: 30px;
+}
 
 /*ERRORS*/
 #alert {
