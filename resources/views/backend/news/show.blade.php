@@ -46,7 +46,9 @@
                 <p class="p-show"><strong>Criada em:</strong> {{$result->created_at}}</p>
             </div>
             <div class="col-md-6">
-                <img class="img-show" src="{{ asset($result->image) }}" />
+                @foreach($newsImage as $img)
+                    <img class="img-show" src="{{url()}}/storage/{{$img->path}}" />
+                @endforeach
             </div>
         </div>
     </div>

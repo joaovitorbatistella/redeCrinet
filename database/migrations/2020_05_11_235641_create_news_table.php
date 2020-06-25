@@ -19,7 +19,6 @@ class CreateNewsTable extends Migration
             $table->longText('body');
             $table->string('author');
             $table->string('source');
-            $table->string('image')->nullable();
             $table->uuid('category_id')->nullable();
             $table->timestamps();
         });

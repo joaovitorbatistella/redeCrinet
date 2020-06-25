@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\News;
 use App\categories;
+use App\NewsImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -38,11 +39,13 @@ class NewsController extends Controller
         ->get();
         $result = $firstResult->firstWhere('uuid', $uuid);
 
-        if(!$result) {
+        $newsImage = DB::table('news_image')->get();
+
+        if(!$result && !$newsImage) {
             return redirect()->to('/backend')->withErrors(['newsUuidShowNotFoundMessage'=>'Não foi encontrado a notícia com o ID informado']);
         }
 
-        return view('backend.news.show', compact('result'));
+        return view('backend.news.show', ['result' => $result, 'newsImage' => $newsImage]);
     }
 
     public function create()
@@ -92,16 +95,18 @@ class NewsController extends Controller
 
                 $category = categories::create($request->all());
 
-                $images = $request->file('images');
+                for ($i=0; $i < count($request->allFiles()['images']); $i++) {
+                    $file = $request->allFiles()['images'][$i];
 
-                foreach($images as $image) {
-                    $destination = '/images/'.'news/'.$news->uuid;
-                    $path = $image->store($destination, 'public');
+                    $newsImage = new NewsImage();
+                    $newsImage->news_id = $news->uuid;
+                    $newsImage->path = $file->store('images/news/'.$news->uuid);
+                    $newsImage->save();
+                    unset($newsImage);
                 }
 
                 $obj_News = News::findOrFail($news->uuid);
                 $obj_News->category_id = $category->uuid;
-                $obj_News->image = '/storage/'.$path;
                 try {
                     $obj_News->save();
                 } catch (\Exception $e){
@@ -121,19 +126,20 @@ class NewsController extends Controller
              }
 
         } else {
-            $news = News::create($request->except('image'));
-
             if ($request->hasFile('images')) {
+                $news = News::create($request->except('image'));
 
-                $images = $request->file('images');
+                for ($i=0; $i < count($request->allFiles()['images']); $i++) {
+                    $file = $request->allFiles()['images'][$i];
 
-                foreach($images as $image) {
-                    $destination = '/images/'.'news/'.$news->uuid;
-                    $path = $image->store($destination, 'public');
+                    $newsImage = new NewsImage();
+                    $newsImage->news_id = $news->uuid;
+                    $newsImage->path = $file->store('images/news/'.$news->uuid);
+                    $newsImage->save();
+                    unset($newsImage);
                 }
 
                 $obj_News = News::findOrFail($news->uuid);
-                $obj_News->image = '/storage/'.$path;
                 $obj_News->category_id = $request['category_id'];
                 try {
                     $obj_News->save();
@@ -215,11 +221,14 @@ class NewsController extends Controller
             if ($request->hasFile('images')) {
                 $category = categories::create($request->all());
 
-                $images = $request->file('images');
+                for ($i=0; $i < count($request->allFiles()['images']); $i++) {
+                    $file = $request->allFiles()['images'][$i];
 
-                foreach($images as $image) {
-                    $destination = '/images/'.'news/'.$uuid;
-                    $path = $image->store($destination, 'public');
+                    $newsImage = new NewsImage();
+                    $newsImage->news_id = $uuid;
+                    $newsImage->path = $file->store('images/news/'.$uuid);
+                    $newsImage->save();
+                    unset($newsImage);
                 }
 
                 $obj_News = News::findOrFail($uuid);
@@ -228,7 +237,6 @@ class NewsController extends Controller
                 $obj_News->author = $$request['author'];
                 $obj_News->source = $$request['source'];
                 $obj_News->category_id = $category->uuid;
-                $obj_News->image = '/storage/'.$path;
                 try {
                     $obj_News->save();
                 } catch (\Exception $e){
@@ -254,11 +262,14 @@ class NewsController extends Controller
         } else {
             if ($request->hasFile('images')) {
 
-                $images = $request->file('images');
+                for ($i=0; $i < count($request->allFiles()['images']); $i++) {
+                    $file = $request->allFiles()['images'][$i];
 
-                foreach($images as $image) {
-                    $destination = '/images/'.'news/'.$uuid;
-                    $path = $image->store($destination, 'public');
+                    $newsImage = new NewsImage();
+                    $newsImage->news_id = $uuid;
+                    $newsImage->path = $file->store('images/news/'.$uuid);
+                    $newsImage->save();
+                    unset($newsImage);
                 }
 
                 $obj_News = News::findOrFail($uuid);
@@ -266,7 +277,6 @@ class NewsController extends Controller
                 $obj_News->body = $request['body'];
                 $obj_News->author = $request['author'];
                 $obj_News->source = $request['source'];
-                $obj_News->image = '/storage/'.$path;
                 $obj_News->category_id = $request['category_id'];
                 try {
                     $obj_News->save();

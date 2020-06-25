@@ -29,7 +29,6 @@
 <body>
     <form class="form-horizontal form-style" method="POST" action="/backend/news/register" enctype="multipart/form-data">
     @csrf
-    {{csrf_field() }}
         <div class="col-md-12 st-con-title">
             <h2 class="form-title">Adicionar notícia</h2>
         </div>
@@ -53,7 +52,7 @@
         <div class="col-md-6">
     <label class="col-md-12">Imagem: </label>
         <div class="st-con-input">
-        <input type="file" name="images[]" class="inputfile" />
+        <input type="file" class="inputfile" name="images[]" multiple/>
         </div>
         </div>
         <div class="col-md-4">

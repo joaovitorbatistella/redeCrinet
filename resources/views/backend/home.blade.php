@@ -103,6 +103,18 @@
         </div>
     </div>
 @enderror
+@error('imageNewsDeleteUuidNotFoundMessage')
+    <div id="alert" style="display:block" class="alert alert-danger">
+        <div class="row">
+            <div class="col-md-10">
+                <p>{{ $message }}</p>
+            </div>
+            <div class="col-md-2">
+             <a class="btn" onclick="handleToastsBtn()"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+@enderror
 @error('newsDestroyFailedMessage')
     <div id="alert" style="display:block" class="alert alert-danger">
         <div class="row">
@@ -301,11 +313,8 @@
 @if(session('success'))
 <div id="alert" class="alert alert-success">
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <p>{{session('success')}}</p>
-            </div>
-            <div class="col-md-2">
-             <a class="btn btn-alert" onclick="handleToastsBtn()"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
@@ -353,7 +362,7 @@
                 <td class="td-body"><p class="body-news">{{$res->body}}</p></td>
                 <td>{{$res->author}}</td>
                 <td>{{$res->source}}</td>
-                <td><img width="110px" src="{{ asset($res->image) }}" /></td>
+                <td>empty</td>
                 <td>{{$res->nameCategory}}</td>
                 <td>{{ date('d/m/Y', strtotime($res->updated_at)) }} às {{ date('H:i', strtotime($res->updated_at)) }}</td>
                 <td><a class="btn edit-news-btn" href="/backend/news/edit/{{$res->uuid}}">Editar</a></td>
@@ -478,6 +487,9 @@
         </footer>
 
 </body>
+<script>
+    $("#alert").fadeOut(8000);
+</script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
