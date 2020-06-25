@@ -39,7 +39,9 @@ class NewsController extends Controller
         ->get();
         $result = $firstResult->firstWhere('uuid', $uuid);
 
-        $newsImage = DB::table('news_image')->get();
+        $newsImage = DB::table('news_image')
+        ->where('news_id', $uuid)
+        ->get();
 
         if(!$result && !$newsImage) {
             return redirect()->to('/backend')->withErrors(['newsUuidShowNotFoundMessage'=>'Não foi encontrado a notícia com o ID informado']);
@@ -98,6 +100,10 @@ class NewsController extends Controller
                 for ($i=0; $i < count($request->allFiles()['images']); $i++) {
                     $file = $request->allFiles()['images'][$i];
 
+                    if(!$file) {
+                        return redirect()->to('/backend')->withErrors(['newsImageIncorrectMessage'=>'Imagem incorreta, erro: '. $e]);
+                    }
+
                     $newsImage = new NewsImage();
                     $newsImage->news_id = $news->uuid;
                     $newsImage->path = $file->store('images/news/'.$news->uuid);
@@ -131,6 +137,10 @@ class NewsController extends Controller
 
                 for ($i=0; $i < count($request->allFiles()['images']); $i++) {
                     $file = $request->allFiles()['images'][$i];
+
+                    if(!$file) {
+                        return redirect()->to('/backend')->withErrors(['newsImageIncorrectMessage'=>'Imagem incorreta, erro: '. $e]);
+                    }
 
                     $newsImage = new NewsImage();
                     $newsImage->news_id = $news->uuid;
@@ -182,7 +192,7 @@ class NewsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\atendimento  $atividade
+     * @param  \App\news  $atividade
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,  $uuid)
@@ -224,6 +234,10 @@ class NewsController extends Controller
                 for ($i=0; $i < count($request->allFiles()['images']); $i++) {
                     $file = $request->allFiles()['images'][$i];
 
+                    if(!$file) {
+                        return redirect()->to('/backend')->withErrors(['newsImageIncorrectMessage'=>'Imagem incorreta, erro: '. $e]);
+                    }
+
                     $newsImage = new NewsImage();
                     $newsImage->news_id = $uuid;
                     $newsImage->path = $file->store('images/news/'.$uuid);
@@ -233,9 +247,9 @@ class NewsController extends Controller
 
                 $obj_News = News::findOrFail($uuid);
                 $obj_News->title = $request['title'];
-                $obj_News->body = $$request['body'];
-                $obj_News->author = $$request['author'];
-                $obj_News->source = $$request['source'];
+                $obj_News->body = $request['body'];
+                $obj_News->author = $request['author'];
+                $obj_News->source = $request['source'];
                 $obj_News->category_id = $category->uuid;
                 try {
                     $obj_News->save();
@@ -248,9 +262,9 @@ class NewsController extends Controller
 
                 $obj_News = News::findOrFail($uuid);
                 $obj_News->title = $request['title'];
-                $obj_News->body = $$request['body'];
-                $obj_News->author = $$request['author'];
-                $obj_News->source = $$request['source'];
+                $obj_News->body = $request['body'];
+                $obj_News->author = $request['author'];
+                $obj_News->source = $request['source'];
                 $obj_News->category_id = $category->uuid;
                 try {
                     $obj_News->save();
@@ -264,6 +278,10 @@ class NewsController extends Controller
 
                 for ($i=0; $i < count($request->allFiles()['images']); $i++) {
                     $file = $request->allFiles()['images'][$i];
+
+                    if(!$file) {
+                        return redirect()->to('/backend')->withErrors(['newsImageIncorrectMessage'=>'Imagem incorreta, erro: '. $e]);
+                    }
 
                     $newsImage = new NewsImage();
                     $newsImage->news_id = $uuid;
@@ -298,7 +316,7 @@ class NewsController extends Controller
              }
         }
 
-        return redirect('/backend')->withSuccess('Atendimento atualizado com sucesso!!');
+        return redirect('/backend')->withSuccess('Notícia atualizado com sucesso!!');
     }
 
     public function delete($uuid)

@@ -72,7 +72,7 @@ class EventsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\atendimento  $atividade
+     * @param  \App\news  $atividade
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,  $uuid)
@@ -111,7 +111,7 @@ class EventsController extends Controller
             return redirect()->to('/backend')->withErrors(['eventsStoreFailedMessage'=>'Não foi possível alterar este evento, erro: '. $e]);
         }
 
-        return redirect('/backend')->withSuccess('Atendimento atualizada com sucesso!!');
+        return redirect('/backend')->withSuccess('Evento atualizado com sucesso!!');
     }
 
     public function delete($uuid)

@@ -71,7 +71,7 @@
     <label class="col-md-12">Imagem: </label>
         <div class="st-con-input">
         <img src="{{$news->image}}" width="110px" style="margin-right: 5px"/>
-        <input type="file" name="images[]" class="inputfile" />
+        <input type="file" name="images[]" class="inputfile" multiple />
         </div>
         </div>
         <div class="col-md-4">

@@ -18,7 +18,6 @@
         <link rel="stylesheet" type="text/css" href="<?php echo asset('css/styled.css')?>">
         <title>Rede - Crinet</title>
 
-
     </head>
     <body>
     <div class="container-fluid .content-body">
@@ -32,6 +31,7 @@
     @yield('front-content')
     </div>
         <script>
+
             $('#religion-mobile,#religion').on('click',function(){
                 var a = document.getElementById("religionId");
                 var b = document.getElementById("cultureId");
@@ -58,12 +58,23 @@
                             dataType: 'json',
                             success: function(response) {
                                 if(response.length === 0){
-                                    alert('Não há notícias dessa categoria para lhe mostrar no momento!');
+                                    alert('Não há notícias desta categoria para lhe mostrar no momento!');
                                 } else {
                                     $.each(response, function(index, item) {
-                                        const {title, body, author, source, image, updated_at, created_at} = item;
+                                        const {title, body, author, source, image, updated_at, created_at, images} = item;
+                                        $("#divReligion").append('<div class="news-flag col-md-12"><h1 class="religion-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="religion-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="religion-news  body-news retreat">'+body+'</p><p class="religion-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><div class="container-'+(index+1)+'"></div></div></div>');
+                                        const arrayLenght = images.length;
+                                        const local = ".container-" + String(index+1);
+                                        console.log(local);
 
-                                        $("#divReligion").append('<div class="news-flag col-md-12"><h1 class="religion-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="religion-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="religion-news  body-news retreat">'+body+'</p><p class="religion-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><img src="'+image+'" /></div></div>');
+                                        for (var i = 0; i < arrayLenght; i++) {
+                                            let path = images[i].path;
+                                            console.log("AAAAA")
+                                            $(local).append('<div class="wall wall-'+i+'" id="wall-'+i+'"><a href="#wall-'+ (i == 1 ? i : i-1) +'">Voltar</a><img class="img-show" src="/storage/'+path+'" /><a href="#wall-'+(i == 6 ? i : i+1)+'">Avançar</a></div>');
+                                            window.location = "#wall-1";
+
+                                        }
+
 
                                     });
                                 }
@@ -115,7 +126,7 @@
                             dataType: 'json',
                             success: function(response) {
                                 if(response.length === 0){
-                                    alert('Não há notícias dessa categoria para lhe mostrar no momento!');
+                                    alert('Não há notícias desta categoria para lhe mostrar no momento!');
                                 } else {
                                     $.each(response, function(index, item) {
                                         const {title, body, author, source, image, updated_at, created_at} = item;
@@ -172,7 +183,7 @@
                             dataType: 'json',
                             success: function(response) {
                                 if(response.length === 0){
-                                    alert('Não há notícias dessa categoria para lhe mostrar no momento!');
+                                    alert('Não há notícias desta categoria para lhe mostrar no momento!');
                                 } else {
                                     $.each(response, function(index, item) {
                                         const {title, body, author, source, image, updated_at, created_at} = item;
@@ -229,7 +240,7 @@
                             dataType: 'json',
                             success: function(response) {
                                 if(response.length === 0){
-                                    alert('Não há notícias dessa categoria para lhe mostrar no momento!');
+                                    alert('Não há notícias desta categoria para lhe mostrar no momento!');
                                 } else {
                                     $.each(response, function(index, item) {
                                     const {title, body, author, source, image, updated_at, created_at} = item;
@@ -287,7 +298,7 @@
                             success: function(response) {
 
                                 if(response.length === 0){
-                                    alert('Não há notícias dessa categoria para lhe mostrar no momento!');
+                                    alert('Não há notícias desta categoria para lhe mostrar no momento!');
                                 } else {
                                     $.each(response, function(index, item) {
                                         const {title, body, author, source, image, updated_at, created_at} = item;
@@ -344,7 +355,7 @@
                             dataType: 'json',
                             success: function(response) {
                                 if(response.length === 0){
-                                    alert('Não há notícias dessa categoria para lhe mostrar no momento!');
+                                    alert('Não há notícias desta categoria para lhe mostrar no momento!');
                                 } else {
                                     $.each(response, function(index, item) {
                                         const {title, body, author, source, image, updated_at, created_at} = item;

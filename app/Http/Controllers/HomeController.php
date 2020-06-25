@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Events;
 use App\categories;
+use App\news_image;
 use App\Live;
 use App\News;
 use Illuminate\Support\Facades\DB;
@@ -37,6 +38,14 @@ class HomeController extends Controller
 
         foreach($news as $n){
             $n->updated_at = \Carbon\Carbon::parse($n->updated_at)->format('d/m/Y H:i');
+        }
+
+        for($i=0; $i < count($news); $i++) {
+            $newsImage = DB::table('news_image')
+            ->where('news_id', $news[$i]->uuid)
+            ->get();
+
+            $news[$i]->images= $newsImage;
         }
 
         echo json_encode($news);

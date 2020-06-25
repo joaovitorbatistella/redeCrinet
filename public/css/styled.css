@@ -628,3 +628,12 @@ footer a img {
 .btn-forgot:hover {
     color: #529b84;
 }
+
+
+.wall{
+    display: none;
+}
+
+.wall:target{
+    display: block;
+}

@@ -139,6 +139,18 @@
         </div>
     </div>
 @enderror
+@error('newsImageIncorrectMessage')
+    <div id="alert" style="display:block" class="alert alert-danger">
+        <div class="row">
+            <div class="col-md-10">
+                <p>{{ $message }}</p>
+            </div>
+            <div class="col-md-2">
+             <a class="btn" onclick="handleToastsBtn()"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+@enderror
 
 @error('eventsStoreValidadorMessage')
     <div id="alert" style="display:block" class="alert alert-danger">

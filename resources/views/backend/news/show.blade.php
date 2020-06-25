@@ -46,13 +46,22 @@
                 <p class="p-show"><strong>Criada em:</strong> {{$result->created_at}}</p>
             </div>
             <div class="col-md-6">
-                @foreach($newsImage as $img)
-                    <img class="img-show" src="{{url()}}/storage/{{$img->path}}" />
-                @endforeach
+                <div class="container">
+                    @for($i=1; $i <= count($newsImage); $i++)
+                        <div class="wall wall-{{$i}}" id="wall-{{$i}}">
+                            <a href="#wall-{{$i === 1 ? $i : $i-1}}">Voltar</a>
+                            <img class="img-show" src="{{url()}}/storage/{{$newsImage[$i-1]->path}}" />
+                            <a href="#wall-{{$i === count($newsImage) ? $i : $i+1}}">Avançar</a>
+                        </div>
+                    @endfor
+                </div>
             </div>
         </div>
     </div>
 
+    <script>
+        window.location = "#wall-1";
+    </script>
 </body>
 </html>
 
