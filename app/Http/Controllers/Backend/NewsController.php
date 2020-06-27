@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Backend;
 
 use App\News;
-use App\categories;
+use App\Categories;
 use App\NewsImage;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -52,7 +52,7 @@ class NewsController extends Controller
 
     public function create()
     {
-        $categoryList = categories::all();
+        $categoryList = Categories::all();
 
         if(!$categoryList) {
             return redirect()->to('/backend')->withErrors(['newsCategoryListNotFoundMessage'=>'Não foi encontrado a notícia com o ID informado']);
@@ -95,7 +95,7 @@ class NewsController extends Controller
             if ($request->hasFile('images')) {
                 $news = News::create($request->except('image', 'category_id'));
 
-                $category = categories::create($request->all());
+                $category = Categories::create($request->all());
 
                 for ($i=0; $i < count($request->allFiles()['images']); $i++) {
                     $file = $request->allFiles()['images'][$i];
@@ -120,7 +120,7 @@ class NewsController extends Controller
                 }
              } else {
                 $news = News::create($request->except('image', 'category_id'));
-                $category = categories::create($request->all());
+                $category = Categories::create($request->all());
 
                 $obj_News = News::findOrFail($news->uuid);
                 $obj_News->category_id = $category->uuid;
@@ -178,7 +178,7 @@ class NewsController extends Controller
         ->select('categories.nameCategory', 'news.*')
         ->get();
         $newsOnce = $news->firstWhere('uuid', $uuid);
-        $obj_Categories = categories::all();
+        $obj_Categories = Categories::all();
 
         if (!$newsOnce) {
             return redirect()->to('/backend')->withErrors(['newsUuidEditNotFoundMessage'=>'Não foi encontrado a notícia com o ID informado']);
@@ -229,7 +229,7 @@ class NewsController extends Controller
         if (!empty($request['nameCategory'])) {
 
             if ($request->hasFile('images')) {
-                $category = categories::create($request->all());
+                $category = Categories::create($request->all());
 
                 for ($i=0; $i < count($request->allFiles()['images']); $i++) {
                     $file = $request->allFiles()['images'][$i];
@@ -258,7 +258,7 @@ class NewsController extends Controller
                 }
 
              } else {
-                $category = categories::create($request->all());
+                $category = Categories::create($request->all());
 
                 $obj_News = News::findOrFail($uuid);
                 $obj_News->title = $request['title'];

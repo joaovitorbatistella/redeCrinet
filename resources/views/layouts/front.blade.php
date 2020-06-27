@@ -16,6 +16,9 @@
 
 
         <link rel="stylesheet" type="text/css" href="<?php echo asset('css/styled.css')?>">
+
+        <link href="{{asset('css/lightbox.min.css')}}" rel="stylesheet" />
+
         <title>Rede - Crinet</title>
 
     </head>
@@ -61,21 +64,10 @@
                                     alert('Não há notícias desta categoria para lhe mostrar no momento!');
                                 } else {
                                     $.each(response, function(index, item) {
-                                        const {title, body, author, source, image, updated_at, created_at, images} = item;
-                                        $("#divReligion").append('<div class="news-flag col-md-12"><h1 class="religion-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="religion-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="religion-news  body-news retreat">'+body+'</p><p class="religion-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><div class="container-'+(index+1)+'"></div></div></div>');
-                                        const arrayLenght = images.length;
-                                        const local = ".container-" + String(index+1);
-                                        console.log(local);
+                                        const {title, body, author, source, image, updated_at, created_at, images, uuid} = item;
+                                        const path = images[0].path;
 
-                                        for (var i = 0; i < arrayLenght; i++) {
-                                            let path = images[i].path;
-                                            console.log("AAAAA")
-                                            $(local).append('<div class="wall wall-'+i+'" id="wall-'+i+'"><a href="#wall-'+ (i == 1 ? i : i-1) +'">Voltar</a><img class="img-show" src="/storage/'+path+'" /><a href="#wall-'+(i == 6 ? i : i+1)+'">Avançar</a></div>');
-                                            window.location = "#wall-1";
-
-                                        }
-
-
+                                        $("#divReligion").append('<div class="news-flag col-md-12"><h1 class="religion-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="religion-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="religion-news  body-news retreat">'+body+'</p><p class="religion-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><a href="news/show/'+uuid+'"><img src="/storage/'+path+'" /></a></div></div>');
                                     });
                                 }
                             }
@@ -388,22 +380,6 @@
 
             var slideIndex = 1;
                 showDivs(slideIndex);
-
-            function plusDivs(n) {
-                showDivs(slideIndex += n);
-            }
-
-            function showDivs(n) {
-                var i;
-                var x = document.getElementsByClassName("mySlides");
-                if (n > x.length) {slideIndex = 1}
-                if (n < 1) {slideIndex = x.length}
-                for (i = 0; i < x.length; i++) {
-                    x[i].style.display = "none";
-
-            }
-                x[slideIndex-1].style.display = "block";
-            }
         </script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>

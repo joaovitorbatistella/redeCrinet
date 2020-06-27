@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\categories;
+use App\Categories;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +47,7 @@ class CategoriesController extends Controller
         }
         //se passou pelas validações, processa e salva no banco...
         try {
-            $obj_Categories = categories::create($request->all());
+            $obj_Categories = Categories::create($request->all());
         } catch (\Exception $e){
             return redirect()->to('/backend')->withErrors(['categoriesStoreFailedMessage'=>'Não foi possível cadastrar esta categoria, erro: '. $e]);
         }
@@ -55,7 +56,7 @@ class CategoriesController extends Controller
 
     public function edit($uuid)
     {
-        $obj_Categories = categories::find($uuid);
+        $obj_Categories = Categories::find($uuid);
 
         if (!$obj_Categories) {
             return redirect()->to('/backend')->withErrors(['categoriesUuidEditNotFoundMessage'=>'Não foi encontrado a categoria com o ID informado']);
@@ -93,7 +94,7 @@ class CategoriesController extends Controller
             ->withInput($request->all);
         }
 
-        $obj_Categories = categories::findOrFail($uuid);
+        $obj_Categories = Categories::findOrFail($uuid);
         $obj_Categories->nameCategory = $request['nameCategory'];
         $obj_Categories->type = $request['type'];
         $obj_Categories->save();
@@ -103,7 +104,7 @@ class CategoriesController extends Controller
 
     public function delete($uuid)
     {
-        $obj_Categories = categories::find($uuid);
+        $obj_Categories = Categories::find($uuid);
 
         if(!$obj_Categories) {
             return redirect()->to('/backend')->withErrors(['categoiresDeleteUuidNotFoundMessage'=>'Não foi encontrado a categoria com o ID informado']);
@@ -114,7 +115,7 @@ class CategoriesController extends Controller
 
     public function destroy($uuid)
     {
-        $obj_Categories = categories::findOrFail($uuid);
+        $obj_Categories = Categories::findOrFail($uuid);
 
         if(!$obj_Categories) {
             return redirect()->to('/backend')->withErrors(['categoriesDeleteUuidNotFoundMessage'=>'Não foi encontrado a categoria com o ID informado']);

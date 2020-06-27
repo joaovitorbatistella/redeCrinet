@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
 use App\Live;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -48,6 +49,8 @@ class LiveController extends Controller
                     $src = $explodedSRC[$i];
                   }
             }
+
+            dd($src);
 
 
             $obj_Live = Live::findOrFail(1);

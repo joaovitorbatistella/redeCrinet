@@ -14,7 +14,7 @@
                     <div class="w3-content w3-display-container">
 
                     @foreach($events as $event)
-                    <div class="mySlides">
+                        <div class="mySlides">
                             <p class="event-title-frame">{{$event->title}}</p>
                             <p class="event-hour-frame">{{$event->description}}</p>
                             <p class="event-description-frame">{{\Carbon\Carbon::parse($event->scheduledto)->format('d/m/Y')}} às {{ \Carbon\Carbon::parse($event->scheduledto)->format('H:i')}}</p>
@@ -264,3 +264,23 @@
             </div>
         </footer>
 @endsection
+
+<script>
+
+
+            function plusDivs(n) {
+                showDivs(slideIndex += n);
+            }
+
+            function showDivs(n) {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                if (n > x.length) {slideIndex = 1}
+                if (n < 1) {slideIndex = x.length}
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+
+            }
+                x[slideIndex-1].style.display = "block";
+            }
+</script>

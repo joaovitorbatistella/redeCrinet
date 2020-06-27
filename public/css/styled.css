@@ -629,11 +629,22 @@ footer a img {
     color: #529b84;
 }
 
-
-.wall{
-    display: none;
+.show-news-row {
+    background-color: #e4f2ed;
+    padding: 30px;
+    margin: 0 2.5% 1.8% 2.5%;
+    border-top-left-radius: 10%;
+    border-bottom-right-radius: 10%;
 }
 
-.wall:target{
-    display: block;
+.p-show {
+    font-size: 22px;
+    font-family: 'Roboto', sans-serif;
+    color: #0F1811;
+    text-align: justify;
+}
+
+.p-title {
+    font-family: 'Roboto', sans-serif;
+    color: #0F1811;
 }

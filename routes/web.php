@@ -16,9 +16,10 @@ if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::post('/ajax/home', 'HomeController@ajax')->name('ajax.home');
-Route::post('/ajaxAll/home', 'HomeController@ajaxAll')->name('ajaxAll.home');
+Route::get('/', 'Frontend\HomeController@index')->name('home');
+Route::post('/ajax/home', 'Frontend\HomeController@ajax')->name('ajax.home');
+Route::post('/ajaxAll/home', 'Frontend\HomeController@ajaxAll')->name('ajaxAll.home');
+Route::get('/news/show/{uuid}', 'Frontend\NewsController@show');
 
 
 Auth::routes();
@@ -33,38 +34,38 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
     Route::prefix('backend')->group(function() {
-        Route::get('/', 'HomeBackendController@index')->name('home');
+        Route::get('/', 'Backend\HomeBackendController@index')->name('home');
             // NEWS
-        Route::get('/news/show/{uuid}', 'NewsController@show');
-        Route::get('/news/create', 'NewsController@create');
-        Route::post('/news/register', 'NewsController@store');
-        Route::get('/news/edit/{uuid}', 'NewsController@edit');
-        Route::put('/news/update/{uuid}', 'NewsController@update');
-        Route::get('/news/delete/{uuid}', 'NewsController@delete');
-        Route::delete('/news/delete/{uuid}', 'NewsController@destroy');
+        Route::get('/news/show/{uuid}', 'Backend\NewsController@show');
+        Route::get('/news/create', 'Backend\NewsController@create');
+        Route::post('/news/register', 'Backend\NewsController@store');
+        Route::get('/news/edit/{uuid}', 'Backend\NewsController@edit');
+        Route::put('/news/update/{uuid}', 'Backend\NewsController@update');
+        Route::get('/news/delete/{uuid}', 'Backend\NewsController@delete');
+        Route::delete('/news/delete/{uuid}', 'Backend\NewsController@destroy');
 
 
             // EVENTS
-        Route::get('/events/show/{uuid}', 'EventsController@show');
-        Route::get('/events/create', 'EventsController@create');
-        Route::post('/events/register', 'EventsController@store');
-        Route::get('/events/edit/{uuid}', 'EventsController@edit');
-        Route::put('/events/update/{uuid}', 'EventsController@update');
-        Route::get('/events/delete/{uuid}', 'EventsController@delete');
-        Route::delete('/events/delete/{uuid}', 'EventsController@destroy');
+        Route::get('/events/show/{uuid}', 'Backend\EventsController@show');
+        Route::get('/events/create', 'Backend\EventsController@create');
+        Route::post('/events/register', 'Backend\EventsController@store');
+        Route::get('/events/edit/{uuid}', 'Backend\EventsController@edit');
+        Route::put('/events/update/{uuid}', 'Backend\EventsController@update');
+        Route::get('/events/delete/{uuid}', 'Backend\EventsController@delete');
+        Route::delete('/events/delete/{uuid}', 'Backend\EventsController@destroy');
 
 
             // CATEGORIES
-        Route::get('/categories/show/{uuid}', 'CategoriesController@show');
-        Route::get('/categories/create', 'CategoriesController@create');
-        Route::post('/categories/register', 'CategoriesController@store');
-        Route::get('/categories/edit/{uuid}', 'CategoriesController@edit');
-        Route::put('/categories/update/{uuid}', 'CategoriesController@update');
-        Route::get('/categories/delete/{uuid}', 'CategoriesController@delete');
-        Route::delete('/categories/delete/{uuid}', 'CategoriesController@destroy');
+        Route::get('/categories/show/{uuid}', 'Backend\CategoriesController@show');
+        Route::get('/categories/create', 'Backend\CategoriesController@create');
+        Route::post('/categories/register', 'Backend\CategoriesController@store');
+        Route::get('/categories/edit/{uuid}', 'Backend\CategoriesController@edit');
+        Route::put('/categories/update/{uuid}', 'Backend\CategoriesController@update');
+        Route::get('/categories/delete/{uuid}', 'Backend\CategoriesController@delete');
+        Route::delete('/categories/delete/{uuid}', 'Backend\CategoriesController@destroy');
 
         // LIVE
-        Route::post('/live/register', 'LiveController@store');
+        Route::post('/live/register', 'Backend\LiveController@store');
     });
 
 });

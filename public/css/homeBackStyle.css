@@ -310,18 +310,3 @@ label {
     margin: 80px 30px 30px 30px;
     margin-left: 75%;
 }
-
-.container{
-    width: 150px;
-    height: 150px;
-  }
-
-  .wall{
-    display: none;
-    width: 100%;
-    height: 100%;
-  }
-
-  .wall:target{
-    display: block;
-  }

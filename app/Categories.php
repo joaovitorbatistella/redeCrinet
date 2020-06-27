@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use YourAppRocks\EloquentUuid\Traits\HasUuid;
 
-class categories extends Model
+class Categories extends Model
 {
     use HasUuid;
     protected $primaryKey = 'uuid';
