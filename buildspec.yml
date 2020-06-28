@@ -21,3 +21,8 @@ hooks:
     - location: dependencies/after.sh
       timeout: 300
       runas: root
+artifacts:
+  files:
+    - buildspec.yml
+    - target/SampleMavenTomcatApp.war
+    - scripts/*
