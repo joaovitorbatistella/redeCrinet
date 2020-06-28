@@ -20,8 +20,8 @@
 
                     @foreach($newsImage as $img)
                         <div class="mySlides">
-                        <a class="example-image-link" href="/storage/{{$img->path}}" target="_blank">
-                            <img class="example-image" width="100%" src="/storage/{{$img->path}}"/>
+                        <a class="example-image-link" href="https://app-rede-crinet.s3.amazonaws.com/{{$img->path}}" target="_blank">
+                            <img class="example-image" width="100%" src="https://app-rede-crinet.s3.amazonaws.com/{{$img->path}}"/>
                         </a>
                         </div>
                     @endforeach

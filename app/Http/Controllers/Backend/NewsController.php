@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\MessageBag;
 
 
@@ -106,7 +106,7 @@ class NewsController extends Controller
 
                     $newsImage = new NewsImage();
                     $newsImage->news_id = $news->uuid;
-                    $newsImage->path = $file->store('images/news/'.$news->uuid);
+                    $newsImage->path = $file->store('images/news/'.$news->uuid, 's3');
                     $newsImage->save();
                     unset($newsImage);
                 }
@@ -144,7 +144,7 @@ class NewsController extends Controller
 
                     $newsImage = new NewsImage();
                     $newsImage->news_id = $news->uuid;
-                    $newsImage->path = $file->store('images/news/'.$news->uuid);
+                    $newsImage->path = $file->store('images/news/'.$news->uuid, 's3');
                     $newsImage->save();
                     unset($newsImage);
                 }
@@ -340,8 +340,7 @@ class NewsController extends Controller
 
         try {
             $obj_News->delete($uuid);
-            $image_path = public_path("/storage/images/news/{$uuid}");
-            File::deleteDirectory($image_path);
+            Storage::disk('s3')->deleteDirectory('images/news/'.$uuid);
         } catch (\Exception $e){
             return redirect()->to('/backend')->withErrors(['newsDestroyFailedMessage'=>'Não foi possível deletar esta notícia, erro: '. $e]);
         }

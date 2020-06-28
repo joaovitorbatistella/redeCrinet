@@ -67,7 +67,7 @@
                                         const {title, body, author, source, image, updated_at, created_at, images, uuid} = item;
                                         const path = images[0].path;
 
-                                        $("#divReligion").append('<div class="news-flag col-md-12"><h1 class="religion-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="religion-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="religion-news  body-news retreat">'+body+'</p><p class="religion-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><a href="news/show/'+uuid+'"><img src="/storage/'+path+'" /></a></div></div>');
+                                        $("#divReligion").append('<div class="news-flag col-md-12"><h1 class="religion-news title-news" style="text-align: center">'+title+'</h1><div class="col-md-7 cfi-first"><p class="religion-news author-news" style="font-size: 15px">'+updated_at+' por '+author+'</p><p class="religion-news  body-news retreat">'+body+'</p><p class="religion-news source-news" style="font-size: 15px"><strong>Fonte: </strong>'+source+'</p></div><div class="col-md-5 cfi-second"><a href="news/show/'+uuid+'"><img src="https://app-rede-crinet.s3.amazonaws.com/'+path+'" /></a></div></div>');
                                     });
                                 }
                             }
