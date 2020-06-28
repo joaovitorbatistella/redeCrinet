@@ -7,11 +7,6 @@ phases:
   pre_build:
     commands:
       - echo Nothing to do in the pre_build phase...
-  hooks:
-  AfterInstall:
-    - location: dependencies/after.sh
-      timeout: 300
-      runas: root
   build:
     commands:
       - echo Build started on `date`
@@ -22,3 +17,8 @@ phases:
 artifacts:
   files:
     - target/messageUtil-1.0.jar
+hooks:
+  AfterInstall:
+    - location: dependencies/after.sh
+      timeout: 300
+      runas: root
