@@ -15,13 +15,9 @@ phases:
       - echo Build completed on `date`
 artifacts:
   files:
-    - target/messageUtil-1.0.jar
+    - source: /
 hooks:
   AfterInstall:
     - location: dependencies/after.sh
       timeout: 300
       runas: root
-artifacts:
-  files:
-    - source: /
-      destination: /var/www/html
