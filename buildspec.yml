@@ -1,5 +1,5 @@
 version: 0.2
-
+os: linux
 phases:
   install:
     runtime-versions:
@@ -23,6 +23,5 @@ hooks:
       runas: root
 artifacts:
   files:
-    - buildspec.yml
-    - target/SampleMavenTomcatApp.war
-    - scripts/*
+    - source: /
+      destination: /var/www/html
