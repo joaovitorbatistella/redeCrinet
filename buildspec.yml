@@ -1,5 +1,5 @@
 version: 0.2
-os: linux
+
 phases:
   install:
     runtime-versions:
@@ -16,10 +16,11 @@ phases:
 artifacts:
   files:
     - target/messageUtil-1.0.jar
+    - appspec.yml
+    - target/SampleMavenTomcatApp.war
+    - scripts/*
 hooks:
   AfterInstall:
     - location: dependencies/after.sh
       timeout: 300
       runas: root
-files:
-    - source: /
