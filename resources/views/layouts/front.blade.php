@@ -28,7 +28,7 @@
                 <div class="col-md-12 content-logo-bar">
                     <a target="_blank" href="http://facebook.com/redecrinet" ><img id="facebook-main" style="width: 50px" src="{{asset('images/facebook.png')}}" /></a>
                     <a href="/" ><img src="{{asset('images/logo.png')}}" /></a>
-                    <a target="_blank" href="#" ><img id="youtube-main" style="width: 70px" src="{{asset('images/yt_logo.png')}}" /></a>
+                    <a target="_blank" href="https://www.youtube.com/channel/UCcMAr5fxqUGtdSzOG1L1_mA" ><img id="youtube-main" style="width: 70px" src="{{asset('images/yt_logo.png')}}" /></a>
                 </div>
             </div>
     @yield('front-content')

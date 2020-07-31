@@ -630,7 +630,7 @@ footer a img {
 }
 
 .show-news-row {
-    background-color: #e4f2ed;
+    background-color: #3e4344;
     padding: 30px;
     margin: 0 2.5% 1.8% 2.5%;
     border-top-left-radius: 10%;
@@ -640,11 +640,11 @@ footer a img {
 .p-show {
     font-size: 22px;
     font-family: 'Roboto', sans-serif;
-    color: #0F1811;
+    color: #F4FFF1;
     text-align: justify;
 }
 
 .p-title {
     font-family: 'Roboto', sans-serif;
-    color: #0F1811;
+    color: #F4FFF1;
 }

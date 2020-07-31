@@ -50,12 +50,19 @@ class LiveController extends Controller
                   }
             }
 
-            dd($src);
 
+            $vrf_Live = Live::all();
+            if($vrf_Live->isEmpty()) {
+                $obj_Live = new Live();
+                $obj_Live->id = 1;
+                $obj_Live->src = $src;
+                $obj_Live->save();
+            } else {
+                $obj_Live = Live::findOrFail(1);
+                $obj_Live->src = $src;
+                $obj_Live->save();
+            }
 
-            $obj_Live = Live::findOrFail(1);
-            $obj_Live->src = $src;
-            $obj_Live->save();
 
         } catch (\Exception $e){
             return redirect()->to('/backend')->withErrors(['liveStoreFailedMessage'=>'Não foi possível registrar esta LIVE, erro: '. $e]);
